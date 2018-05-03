@@ -68,7 +68,7 @@ namespace Car_Management
 
             ReaderControllor.cmd.MultiEPC_Event += ShowEPC;
 
-            this.tabPage2.Parent = null;
+            //this.tabPage2.Parent = null;
         }
 
         private void Cars_and_Clients_Load(object sender, EventArgs e)
@@ -301,8 +301,16 @@ namespace Car_Management
                 new LogWriter(ex.ToString());
             }
         }
-        
 
+        string str_epc = "";
+        string str_pc = "";
+        string str_read_cnt ="" ;
+        string str_ant_id = "";
+        string str_dev = "";
+        string str_ip = "";
+        string str_time = "";
+        string str_rssi = "";
+        string direction = "";
         private void timer_md_query_Tick_Tick_1(object sender, EventArgs e)
         {
             try
@@ -315,15 +323,15 @@ namespace Car_Management
                 for (int index = 0; index < epcs_list.Count; index++)
                 {
                     //转换成string
-                    string str_epc = epcs_list[index].epc;
-                    string str_pc = epcs_list[index].PC.ToString("X2");
-                    string str_read_cnt = epcs_list[index].count.ToString();
-                    string str_ant_id = epcs_list[index].antID.ToString();
-                    string str_dev = epcs_list[index].dev;
-                    string str_ip = epcs_list[index].ClientIP;
-                    string str_time = epcs_list[index].time;
-                    string str_rssi = epcs_list[index].RSSI.ToString("f1");
-                    string direction = epcs_list[index].direction.ToString();
+                    str_epc = epcs_list[index].epc;
+                    str_pc = epcs_list[index].PC.ToString("X2");
+                    str_read_cnt = epcs_list[index].count.ToString();
+                    str_ant_id = epcs_list[index].antID.ToString();
+                    str_dev = epcs_list[index].dev;
+                    str_ip = epcs_list[index].ClientIP;
+                    str_time = epcs_list[index].time;
+                    str_rssi = epcs_list[index].RSSI.ToString("f1");
+                    direction = epcs_list[index].direction.ToString();
                     totalnum1 += epcs_list[index].count;
                     bool Exist = false;
                     int item_index = 0;
@@ -367,6 +375,35 @@ namespace Car_Management
             {
                 new LogWriter(ex.ToString());
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ReaderControllor.GetMultiEPC().Clear();
+            epcs_list.Clear();
+            listView_md_epc.Items.Clear();
+            //label26_total.Text = "0";
+            totalnum1 = 0;
+            totalnum2 = 0;
+            totaltime = 0;
+            //label10.Text = "0";
+            //label8.Text = "0";
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            string count = str_read_cnt;
+            MessageBox.Show("Count: " + str_read_cnt);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            loadData();
+            dataGridView1.Update();
+            dataGridView1.Refresh();
+
+            dgvClients.Update();
+            dgvClients.Refresh();
         }
     }
 }

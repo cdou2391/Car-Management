@@ -48,10 +48,6 @@ namespace Car_Management
                             {
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("New Car added!");
-                                Cars_and_Clients frmCars = new Cars_and_Clients();
-                                frmCars.loadData();
-                                frmCars.dataGridView1.Update();
-                                frmCars.dataGridView1.Refresh();
                             }
                             conn.Close();
                         }
@@ -79,6 +75,10 @@ namespace Car_Management
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Cars_and_Clients frmCars = (Cars_and_Clients)Application.OpenForms["Cars_and_Clients"];
+            frmCars.loadData();
+            frmCars.dataGridView1.Update();
+            frmCars.dataGridView1.Refresh();
             this.Close();
         }
 

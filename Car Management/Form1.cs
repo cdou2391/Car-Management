@@ -7,8 +7,6 @@ namespace Car_Management
 {
     public partial class Form1 : Form
     {
-
-        //LogWriter log;
         public Form1()
         {
             InitializeComponent();

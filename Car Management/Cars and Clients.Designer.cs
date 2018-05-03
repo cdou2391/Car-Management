@@ -38,6 +38,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnShow = new System.Windows.Forms.Button();
             this.listView_md_epc = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,6 +50,7 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.checkBoxSingle = new System.Windows.Forms.CheckBox();
             this.checkBoxMulti = new System.Windows.Forms.CheckBox();
@@ -57,6 +59,7 @@
             this.btnSet = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.bntNewClient = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
@@ -81,7 +84,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(633, 450);
+            this.panel1.Size = new System.Drawing.Size(793, 450);
             this.panel1.TabIndex = 0;
             // 
             // tabControl1
@@ -93,7 +96,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(633, 416);
+            this.tabControl1.Size = new System.Drawing.Size(793, 416);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -103,7 +106,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(625, 390);
+            this.tabPage1.Size = new System.Drawing.Size(785, 390);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cars";
             // 
@@ -113,7 +116,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(619, 384);
+            this.panel2.Size = new System.Drawing.Size(779, 384);
             this.panel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -126,7 +129,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(619, 384);
+            this.dataGridView1.Size = new System.Drawing.Size(779, 384);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage2
@@ -136,7 +139,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(625, 390);
+            this.tabPage2.Size = new System.Drawing.Size(785, 390);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clients";
             // 
@@ -146,7 +149,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(619, 384);
+            this.panel4.Size = new System.Drawing.Size(779, 384);
             this.panel4.TabIndex = 0;
             // 
             // dgvClients
@@ -159,20 +162,31 @@
             this.dgvClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClients.Location = new System.Drawing.Point(0, 0);
             this.dgvClients.Name = "dgvClients";
-            this.dgvClients.Size = new System.Drawing.Size(619, 384);
+            this.dgvClients.Size = new System.Drawing.Size(779, 384);
             this.dgvClients.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage3.Controls.Add(this.btnShow);
             this.tabPage3.Controls.Add(this.listView_md_epc);
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(625, 390);
+            this.tabPage3.Size = new System.Drawing.Size(785, 390);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Active Devices";
+            // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(142, 159);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(75, 23);
+            this.btnShow.TabIndex = 115;
+            this.btnShow.Text = "Show Count";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
             // listView_md_epc
             // 
@@ -190,7 +204,7 @@
             this.listView_md_epc.GridLines = true;
             this.listView_md_epc.Location = new System.Drawing.Point(3, 36);
             this.listView_md_epc.Name = "listView_md_epc";
-            this.listView_md_epc.Size = new System.Drawing.Size(619, 351);
+            this.listView_md_epc.Size = new System.Drawing.Size(779, 351);
             this.listView_md_epc.TabIndex = 114;
             this.listView_md_epc.UseCompatibleStateImageBehavior = false;
             this.listView_md_epc.View = System.Windows.Forms.View.Details;
@@ -239,6 +253,7 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnClear);
             this.panel5.Controls.Add(this.btnStop);
             this.panel5.Controls.Add(this.checkBoxSingle);
             this.panel5.Controls.Add(this.checkBoxMulti);
@@ -249,8 +264,18 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(619, 33);
+            this.panel5.Size = new System.Drawing.Size(779, 33);
             this.panel5.TabIndex = 3;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(630, 4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "Clear Data";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnStop
             // 
@@ -321,23 +346,35 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnRefresh);
             this.panel3.Controls.Add(this.bntNewClient);
             this.panel3.Controls.Add(this.btnExit);
             this.panel3.Controls.Add(this.btnAddNew);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 416);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(633, 34);
+            this.panel3.Size = new System.Drawing.Size(793, 34);
             this.panel3.TabIndex = 1;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Location = new System.Drawing.Point(568, 6);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // bntNewClient
             // 
             this.bntNewClient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntNewClient.Location = new System.Drawing.Point(173, 6);
+            this.bntNewClient.Location = new System.Drawing.Point(141, 6);
             this.bntNewClient.Name = "bntNewClient";
-            this.bntNewClient.Size = new System.Drawing.Size(298, 22);
+            this.bntNewClient.Size = new System.Drawing.Size(360, 22);
             this.bntNewClient.TabIndex = 2;
             this.bntNewClient.Text = "Add New Client";
             this.bntNewClient.UseVisualStyleBackColor = true;
@@ -346,7 +383,7 @@
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(546, 6);
+            this.btnExit.Location = new System.Drawing.Point(706, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 1;
@@ -375,7 +412,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(633, 450);
+            this.ClientSize = new System.Drawing.Size(793, 450);
             this.Controls.Add(this.panel1);
             this.Name = "Cars_and_Clients";
             this.Text = "Cars_and_Clients";
@@ -430,5 +467,8 @@
         private System.Windows.Forms.Timer timer_md_query_Tick;
         internal System.Windows.Forms.DataGridView dataGridView1;
         internal System.Windows.Forms.DataGridView dgvClients;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnShow;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

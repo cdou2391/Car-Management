@@ -20,6 +20,10 @@ namespace Car_Management
         string error;
         private void btnExit_Click(object sender, EventArgs e)
         {
+            Cars_and_Clients frmCars = (Cars_and_Clients)Application.OpenForms["Cars_and_Clients"];
+            frmCars.loadData();
+            frmCars.dgvClients.Update();
+            frmCars.dgvClients.Refresh();
             this.Close();
         }
 
