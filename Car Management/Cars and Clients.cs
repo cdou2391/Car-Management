@@ -6,13 +6,18 @@ using System.Data.SqlClient;
 using NetFrame.Net.TCP.Sock.Asynchronous;
 using System.Threading;
 using System.IO.Ports;
+using System.IO;
+using System.Reflection;
+using System.Text;
 
 namespace Car_Management
 {
     
     public partial class Cars_and_Clients : Form
     {
-        
+
+
+        private const int cash= 100;
         private long totalnum1 = 0x00;
         private long totalnum2 = 0x00;
         private long totaltime = 0x00;
@@ -26,7 +31,6 @@ namespace Car_Management
         private const int listView_md_epc_Last_Time = 7;
         private const int listView_md_epc_Direction = 8;
         private volatile List<_epc_t> epcs_list = new List<_epc_t>(1000);
-
         private string portname = "";
         private int baudRate = 230400;
         private int dataBits = 8;
@@ -114,7 +118,7 @@ namespace Car_Management
             }
             catch(Exception ex)
             {
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
             
         }
@@ -136,14 +140,16 @@ namespace Car_Management
                     {
                         timer_md_query_Tick.Enabled = true;
                     }
+                    serialisstart = true;
+                    btnStartPort.Text = "Stop";
                 }
                 catch (Exception ex)
                 {
                     // UpdateLog("Error:" + ex.ToString());
-                    new LogWriter(ex.ToString());
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new LogWriter(ex);
                 }
-                serialisstart = true;
-                btnStartPort.Text = "Stop";
+                
                 //UpdateLog(openserial + success);
             }
             else
@@ -190,7 +196,7 @@ namespace Car_Management
             catch (Exception ex)
             {
                 //UpdateLog(ex.ToString());
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
 
@@ -226,7 +232,7 @@ namespace Car_Management
             catch (Exception ex)
             {
                 //UpdateLog(ex.ToString());
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
         public void loadData()
@@ -242,7 +248,7 @@ namespace Car_Management
                     {
                         var select = "SELECT * FROM Contacts ";
                         var dataAdapter = new SqlDataAdapter(select, conn);
-                        var select2 = "SELECT * FROM Users ";
+                        var select2 = "SELECT * FROM Clients ";
                         var dataAdapter2 = new SqlDataAdapter(select2, conn);
 
                         var commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -264,15 +270,15 @@ namespace Car_Management
                 }
                 else
                 {
-                    error = "Connection to the database was not established.";
-                    MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    new LogWriter(error);
+                    throw new Exception("Connection to the database was not established.");
+                    //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
         public void ShowEPC(object sender, Command.ShowEPCEventArgs e)
@@ -298,7 +304,7 @@ namespace Car_Management
             }
             catch(Exception ex)
             {
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
 
@@ -315,6 +321,9 @@ namespace Car_Management
         {
             try
             {
+                string connected;
+                DatabaseConnection check = new DatabaseConnection();
+                connected = check.checkDatabase();
                 totalnum1 = 0;
                 totaltime++;
                 //label10.Text = totaltime.ToString();
@@ -322,7 +331,6 @@ namespace Car_Management
                 //label26_total.Text = epcs_list.Count.ToString();
                 for (int index = 0; index < epcs_list.Count; index++)
                 {
-                    //转换成string
                     str_epc = epcs_list[index].epc;
                     str_pc = epcs_list[index].PC.ToString("X2");
                     str_read_cnt = epcs_list[index].count.ToString();
@@ -333,11 +341,39 @@ namespace Car_Management
                     str_rssi = epcs_list[index].RSSI.ToString("f1");
                     direction = epcs_list[index].direction.ToString();
                     totalnum1 += epcs_list[index].count;
+                    string account1 = "";
                     bool Exist = false;
                     int item_index = 0;
-                    //判断标签是否被重复扫描
+                    long account = 0; ;
+                    //using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
+                    //{
+                    //    string querry2 = @"SELECT * FROM Contacts where SerialNumber='" + str_epc + "' ";
+                    //    DataTable table3 = new DataTable();
+                    //    SqlDataAdapter adapter3 = new SqlDataAdapter(querry2, conn);
+                    //    adapter3.Fill(table3);
+                        
+                    //    if (table3.Rows.Count > 0)
+                    //    {
+                    //        account1 = table3.Rows[0]["Account"].ToString();
+                    //    }
+                    //    conn.Close();
+                    //}
                     foreach (ListViewItem viewitem in this.listView_md_epc.Items)
                     {
+                        using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
+                        {
+                            conn.Open();
+                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@account where SerialNumber = '"+ str_epc+"'";
+                            
+                            //account = Int64.Parse(account1) - (Int64.Parse(str_read_cnt) * cash);
+                            using (SqlCommand cmd = new SqlCommand(querry, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
+                                cmd.Parameters.AddWithValue("@account", account);
+                                cmd.ExecuteNonQuery();
+                            }
+                            conn.Close();
+                        }
                         if ((viewitem.SubItems[listView_md_epc_EPC].Text == str_epc) && (viewitem.SubItems[listView_md_epc_IP].Text == str_dev))
                         {
                             viewitem.SubItems[listView_md_epc_AntID].Text = str_ant_id;
@@ -346,6 +382,7 @@ namespace Car_Management
                             viewitem.SubItems[listView_md_epc_PC].Text = str_pc;
                             viewitem.SubItems[listView_md_epc_Rssi].Text = str_rssi;
                             viewitem.SubItems[listView_md_epc_Direction].Text = direction;
+
                             Exist = true;
                             break;
                         }
@@ -370,10 +407,11 @@ namespace Car_Management
                 }
                 //label8.Text = (totalnum1 - totalnum2).ToString();
                 totalnum2 = totalnum1;
+
             }
             catch(Exception ex)
             {
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
 
@@ -390,13 +428,10 @@ namespace Car_Management
             //label8.Text = "0";
         }
 
-        private void btnShow_Click(object sender, EventArgs e)
-        {
-            string count = str_read_cnt;
-            MessageBox.Show("Count: " + str_read_cnt);
-        }
+       
+        
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnRefresh_Click_1(object sender, EventArgs e)
         {
             loadData();
             dataGridView1.Update();
@@ -404,6 +439,35 @@ namespace Car_Management
 
             dgvClients.Update();
             dgvClients.Refresh();
+        }
+
+        private void btnRefreshLog_Click(object sender, EventArgs e)
+        {
+            string path= Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            using (StreamReader streamReader = new StreamReader(path + "\\" + "ErrorsLog.txt", Encoding.UTF8))
+            {
+                txtLog.Text = streamReader.ReadToEnd();
+            }
+        }
+
+        private void Cars_and_Clients_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                serialisstart = false;
+                ReaderControllor.SerialPortClose();
+                if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
+                {
+                    timer_md_query_Tick.Enabled = false;
+                }
+                btnStartPort.Text = "Start";
+                btnStop.PerformClick();
+
+            }
+            catch(Exception ex)
+            {
+                new LogWriter(ex);
+            }
         }
     }
 }

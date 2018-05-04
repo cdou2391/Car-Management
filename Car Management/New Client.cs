@@ -47,7 +47,7 @@ namespace Car_Management
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                         {
                             conn.Open();
-                            string querry = "INSERT INTO Users(ID,Name,Surname,Email,PhoneNumber,Technician) "
+                            string querry = "INSERT INTO Clients(ID,Name,Surname,Email,PhoneNumber,Technician) "
                                            + "Values('" + IDNum + "','" + name + "','" + surname + "','" + email + "','" + PhoneNum + "','" + tech + "')";
                             using (SqlCommand cmd = new SqlCommand(querry, conn))
                             {
@@ -63,22 +63,22 @@ namespace Car_Management
                     }
                     else
                     {
-                        error = "Please make sure you have entered all the required information";
-                        MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        new LogWriter(error);
+                        throw new Exception("Please make sure you have entered all the required information");
+                        //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //new LogWriter(error);
                     }
                 }
                 else
                 {
-                    error = "Not Connected";
-                    MessageBox.Show(error);
-                    new LogWriter(error);
+                    throw new Exception("Not Connected");
+                    //MessageBox.Show(error);
+                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
     }

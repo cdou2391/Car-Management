@@ -8,8 +8,8 @@ namespace Car_Management
 {
     class Global
     {
-        public static Cars Client;
-        public static Users User;
+        public static Cars Car;
+        public static Clients Client;
         public static Technicians Technician;
     }
 }

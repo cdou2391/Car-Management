@@ -54,22 +54,22 @@ namespace Car_Management
                     }
                     else
                     {
-                        error = "Please make sure you have entered all the required information";
-                        MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        new LogWriter(error);
+                        throw new Exception("Please make sure you have entered all the required information");
+                        //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //new LogWriter(error);
                     }
                 }
                 else
                 {
-                    error = "Not Connected";
-                    MessageBox.Show(error);
-                    new LogWriter(error);
+                    throw new Exception("Not Connected");
+                    //MessageBox.Show(error);
+                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
 
@@ -107,15 +107,15 @@ namespace Car_Management
                 }
                 else
                 {
-                    error = "Connection to the database was not established.";
-                    MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    new LogWriter(error);
+                    throw new Exception("Connection to the database was not established.");
+                    //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
     }

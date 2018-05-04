@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Car_Management
 {
-    class Users
+    class Clients
     {
         public string ID;
         public string Names;

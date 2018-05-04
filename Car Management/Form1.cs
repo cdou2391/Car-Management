@@ -29,7 +29,7 @@ namespace Car_Management
 
                         if (table.Rows.Count > 0)
                         {
-                            Global.Client = new Cars
+                            Global.Car = new Cars
                             {
                                 serialNumber = table.Rows[0]["SerialNumber"].ToString(),
                                 Names = table.Rows[0]["Names"].ToString(),
@@ -39,6 +39,7 @@ namespace Car_Management
                                 clientID = table.Rows[0]["ID"].ToString(),
                                 clientAccount = table.Rows[0]["Account"].ToString(),
                                 Technician = table.Rows[0]["Technician"].ToString(),
+                                Count = table.Rows[0]["Count"].ToString(),
                             };
                         }
                         DataTable table1 = new DataTable();
@@ -69,12 +70,12 @@ namespace Car_Management
                             
                         }
                         DataTable table2 = new DataTable();
-                        SqlDataAdapter adapter2 = new SqlDataAdapter(@"select * from Users", conn);
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(@"select * from Clients", conn);
                         adapter2.Fill(table2);
 
                         if (table2.Rows.Count > 0)
                         {
-                            Global.User = new Users
+                            Global.Client = new Clients
                             {
                                 Names = table2.Rows[0]["Name"].ToString(),
                                 Surnames = table2.Rows[0]["Surname"].ToString(),
@@ -88,15 +89,15 @@ namespace Car_Management
                 }
                 else
                 {
-                    error = "Connection to the database was not established.";
-                    MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    new LogWriter(error);
+                    throw new Exception("Connection to the database was not established.");
+                    //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Please provide your correct email and password in order to log in!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
 
@@ -129,15 +130,15 @@ namespace Car_Management
                 }
                 else
                 {
-                    error = "Connection to the database was not established.";
-                    MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    new LogWriter(error);
+                    throw new Exception("Connection to the database was not established.");
+                    //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                new LogWriter(ex.ToString());
+                new LogWriter(ex);
             }
         }
     }

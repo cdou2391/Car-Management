@@ -16,6 +16,6 @@ namespace Car_Management
         public string phoneNumber;
         public string clientAccount;
         public string Technician;
-
+        public string Count;
     }
 }

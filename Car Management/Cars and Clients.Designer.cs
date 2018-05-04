@@ -38,7 +38,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnShow = new System.Windows.Forms.Button();
             this.listView_md_epc = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,6 +57,11 @@
             this.btnStartPort = new System.Windows.Forms.Button();
             this.btnSet = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pnlLog = new System.Windows.Forms.Panel();
+            this.txtLog = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnRefreshLog = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.bntNewClient = new System.Windows.Forms.Button();
@@ -74,6 +78,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.pnlLog.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +99,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -168,7 +176,6 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage3.Controls.Add(this.btnShow);
             this.tabPage3.Controls.Add(this.listView_md_epc);
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -177,16 +184,6 @@
             this.tabPage3.Size = new System.Drawing.Size(785, 390);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Active Devices";
-            // 
-            // btnShow
-            // 
-            this.btnShow.Location = new System.Drawing.Point(142, 159);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(75, 23);
-            this.btnShow.TabIndex = 115;
-            this.btnShow.Text = "Show Count";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
             // listView_md_epc
             // 
@@ -344,6 +341,57 @@
             this.textBox1.Size = new System.Drawing.Size(131, 20);
             this.textBox1.TabIndex = 0;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.pnlLog);
+            this.tabPage4.Controls.Add(this.panel6);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(785, 390);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Errors Log";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // pnlLog
+            // 
+            this.pnlLog.Controls.Add(this.txtLog);
+            this.pnlLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLog.Location = new System.Drawing.Point(3, 34);
+            this.pnlLog.Name = "pnlLog";
+            this.pnlLog.Size = new System.Drawing.Size(779, 353);
+            this.pnlLog.TabIndex = 1;
+            // 
+            // txtLog
+            // 
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLog.Location = new System.Drawing.Point(0, 0);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ReadOnly = true;
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLog.Size = new System.Drawing.Size(779, 353);
+            this.txtLog.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnRefreshLog);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(3, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(779, 31);
+            this.panel6.TabIndex = 0;
+            // 
+            // btnRefreshLog
+            // 
+            this.btnRefreshLog.Location = new System.Drawing.Point(6, 2);
+            this.btnRefreshLog.Name = "btnRefreshLog";
+            this.btnRefreshLog.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshLog.TabIndex = 0;
+            this.btnRefreshLog.Text = "Refresh Log";
+            this.btnRefreshLog.UseVisualStyleBackColor = true;
+            this.btnRefreshLog.Click += new System.EventHandler(this.btnRefreshLog_Click);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnRefresh);
@@ -359,22 +407,20 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(568, 6);
+            this.btnRefresh.Location = new System.Drawing.Point(607, 6);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click_1);
             // 
             // bntNewClient
             // 
-            this.bntNewClient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntNewClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bntNewClient.Location = new System.Drawing.Point(141, 6);
             this.bntNewClient.Name = "bntNewClient";
-            this.bntNewClient.Size = new System.Drawing.Size(360, 22);
+            this.bntNewClient.Size = new System.Drawing.Size(109, 22);
             this.bntNewClient.TabIndex = 2;
             this.bntNewClient.Text = "Add New Client";
             this.bntNewClient.UseVisualStyleBackColor = true;
@@ -414,8 +460,12 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(793, 450);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Cars_and_Clients";
             this.Text = "Cars_and_Clients";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Cars_and_Clients_FormClosing);
             this.Load += new System.EventHandler(this.Cars_and_Clients_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -428,6 +478,10 @@
             this.tabPage3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.pnlLog.ResumeLayout(false);
+            this.pnlLog.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -468,7 +522,11 @@
         internal System.Windows.Forms.DataGridView dataGridView1;
         internal System.Windows.Forms.DataGridView dgvClients;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel pnlLog;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnRefreshLog;
+        private System.Windows.Forms.TextBox txtLog;
     }
 }
