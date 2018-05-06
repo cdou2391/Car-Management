@@ -30,7 +30,6 @@ namespace Car_Management
                 {
                     if (txtSrlNum.Text != "" & txtPltNum.Text != "")
                     {
-                        MessageBox.Show((long.TryParse(txtPltNum.Text, out i)).ToString());
                         string names = comboUsers.Text;
                         long PhoneNum = Convert.ToInt64(txtPhnNum.Text);
                         long srlNum = Convert.ToInt64(txtSrlNum.Text);
@@ -48,6 +47,13 @@ namespace Car_Management
                             {
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("New Car added!");
+                                txtAcc.Clear();
+                                txtAddress.Clear();
+                                txtID.Clear();
+                                txtPhnNum.Clear();
+                                txtPltNum.Clear();
+                                txtSrlNum.Clear();
+                                comboUsers.ResetText();
                             }
                             conn.Close();
                         }
@@ -93,7 +99,7 @@ namespace Car_Management
                 {
                     using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                     {
-                        SqlCommand cmd = new SqlCommand("Select Name,Surname FROM Users", conn);
+                        SqlCommand cmd = new SqlCommand("Select Name,Surname FROM Clients", conn);
                         conn.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
                         AutoCompleteStringCollection MyCollection = new AutoCompleteStringCollection();

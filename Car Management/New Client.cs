@@ -54,9 +54,11 @@ namespace Car_Management
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("New Client added!");
                                 Cars_and_Clients frmCars = new Cars_and_Clients();
-                                frmCars.loadData();
-                                frmCars.dgvClients.Update();
-                                frmCars.dgvClients.Refresh();
+                                txtEmail.Clear();
+                                txtIDNum.Clear();
+                                txtName.Clear();
+                                txtPhnNum.Clear();
+                                txtSurname.Clear();
                             }
                             conn.Close();
                         }

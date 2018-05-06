@@ -30,6 +30,7 @@ namespace Car_Management
         private const int listView_md_epc_IP = 6;
         private const int listView_md_epc_Last_Time = 7;
         private const int listView_md_epc_Direction = 8;
+        private const int listView_md_State = 3;
         private volatile List<_epc_t> epcs_list = new List<_epc_t>(1000);
         private string portname = "";
         private int baudRate = 230400;
@@ -37,42 +38,21 @@ namespace Car_Management
         private Parity parity = Parity.None;
         private StopBits stopbits = StopBits.One;
         string error;
+        List<AsyncSocketState> clients;
         public Cars_and_Clients()
         {
             InitializeComponent();
-            //this.listView_oper_log.Columns.Add("序号/NUM", 80, HorizontalAlignment.Left);//Num
-            //this.listView_oper_log.Columns.Add("时间/Time", 150, HorizontalAlignment.Left);//Time
-            //this.listView_oper_log.Columns.Add("执行结果/Result", 450, HorizontalAlignment.Left);//Operation Result
-            //this.listView_oper_log.GridLines = true;
-            //this.listView_oper_log.FullRowSelect = true;
-            //this.listView_oper_log.MultiSelect = false;
-
-
-            //this.listView_md_addr.Columns.Add("Num", 30, HorizontalAlignment.Left);
-            //this.listView_md_addr.Columns.Add("IP", 100, HorizontalAlignment.Left);
-            //this.listView_md_addr.Columns.Add("Port", 50, HorizontalAlignment.Left);
-            //this.listView_md_addr.Columns.Add("ID", 50, HorizontalAlignment.Left);
-            //this.listView_md_addr.Columns.Add("State", 50, HorizontalAlignment.Left);
-            //this.listView_md_addr.GridLines = true;
-            //this.listView_md_addr.FullRowSelect = true;
-            //this.listView_md_addr.MultiSelect = false;
-
-
             Control.CheckForIllegalCrossThreadCalls = false;
-
-            //comboBox_mb.SelectedIndex = 1;//epc
-            //filterbox.SelectedIndex = 0;  //不过滤
-            //comboBox3.SelectedIndex = 1;
-            //comboBox4.SelectedIndex = 1;
-            //timer_scan.Enabled = true;
-
-            //language_cb.SelectedIndex = 0;
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
-            //UpDataMainFormUILanguage();
-
             ReaderControllor.cmd.MultiEPC_Event += ShowEPC;
 
-            //this.tabPage2.Parent = null;
+            this.listView_md_addr.Columns.Add("Num", 30, HorizontalAlignment.Left);
+            this.listView_md_addr.Columns.Add("IP", 100, HorizontalAlignment.Left);
+            this.listView_md_addr.Columns.Add("Port", 50, HorizontalAlignment.Left);
+            this.listView_md_addr.Columns.Add("ID", 50, HorizontalAlignment.Left);
+            this.listView_md_addr.Columns.Add("State", 50, HorizontalAlignment.Left);
+            this.listView_md_addr.GridLines = true;
+            this.listView_md_addr.FullRowSelect = true;
+            this.listView_md_addr.MultiSelect = false;
         }
 
         private void Cars_and_Clients_Load(object sender, EventArgs e)
@@ -141,16 +121,14 @@ namespace Car_Management
                         timer_md_query_Tick.Enabled = true;
                     }
                     serialisstart = true;
+                    lblPort.Text = textBox1.Text;
                     btnStartPort.Text = "Stop";
                 }
                 catch (Exception ex)
                 {
-                    // UpdateLog("Error:" + ex.ToString());
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     new LogWriter(ex);
                 }
-                
-                //UpdateLog(openserial + success);
             }
             else
             {
@@ -191,6 +169,7 @@ namespace Car_Management
                         ReaderControllor.SatrtMultiEPC(currentclient);
                     }
                 }
+                btnMultiEPC.Enabled = false;
                 //UpdateLog(start + multiepc + success);
             }
             catch (Exception ex)
@@ -228,6 +207,7 @@ namespace Car_Management
                         //UpdateLog(stop + multiepc + success);
                     }
                 }
+                btnMultiEPC.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -326,9 +306,9 @@ namespace Car_Management
                 connected = check.checkDatabase();
                 totalnum1 = 0;
                 totaltime++;
-                //label10.Text = totaltime.ToString();
-                //epcs_list = ReaderControllor.GetMultiEPC();
-                //label26_total.Text = epcs_list.Count.ToString();
+                lblTime.Text = totaltime.ToString();
+                epcs_list = ReaderControllor.GetMultiEPC();
+                lblNumVhcls.Text = epcs_list.Count.ToString();
                 for (int index = 0; index < epcs_list.Count; index++)
                 {
                     str_epc = epcs_list[index].epc;
@@ -345,19 +325,19 @@ namespace Car_Management
                     bool Exist = false;
                     int item_index = 0;
                     long account = 0; ;
-                    //using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
-                    //{
-                    //    string querry2 = @"SELECT * FROM Contacts where SerialNumber='" + str_epc + "' ";
-                    //    DataTable table3 = new DataTable();
-                    //    SqlDataAdapter adapter3 = new SqlDataAdapter(querry2, conn);
-                    //    adapter3.Fill(table3);
-                        
-                    //    if (table3.Rows.Count > 0)
-                    //    {
-                    //        account1 = table3.Rows[0]["Account"].ToString();
-                    //    }
-                    //    conn.Close();
-                    //}
+                    using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
+                    {
+                        string querry2 = @"SELECT * FROM Contacts where SerialNumber='" + str_epc + "' ";
+                        DataTable table3 = new DataTable();
+                        SqlDataAdapter adapter3 = new SqlDataAdapter(querry2, conn);
+                        adapter3.Fill(table3);
+
+                        if (table3.Rows.Count > 0)
+                        {
+                            account1 = table3.Rows[0]["Account"].ToString();
+                        }
+                        conn.Close();
+                    }
                     foreach (ListViewItem viewitem in this.listView_md_epc.Items)
                     {
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
@@ -402,10 +382,9 @@ namespace Car_Management
                         this.listView_md_epc.Items.Add(item);
                         this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].EnsureVisible();
                         this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].Selected = true;
-                        // this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].BackColor = System.Drawing.Color.FromArgb(red, green, blue);
+                        this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].BackColor = System.Drawing.Color.FromArgb(red:200,blue:200,green:200);
                     }
                 }
-                //label8.Text = (totalnum1 - totalnum2).ToString();
                 totalnum2 = totalnum1;
 
             }
@@ -420,11 +399,11 @@ namespace Car_Management
             ReaderControllor.GetMultiEPC().Clear();
             epcs_list.Clear();
             listView_md_epc.Items.Clear();
-            //label26_total.Text = "0";
+            lblNumVhcls.Text = "0";
             totalnum1 = 0;
             totalnum2 = 0;
             totaltime = 0;
-            //label10.Text = "0";
+            lblTime.Text = "0";
             //label8.Text = "0";
         }
 
@@ -434,9 +413,6 @@ namespace Car_Management
         private void btnRefresh_Click_1(object sender, EventArgs e)
         {
             loadData();
-            dataGridView1.Update();
-            dataGridView1.Refresh();
-
             dgvClients.Update();
             dgvClients.Refresh();
         }
@@ -468,6 +444,75 @@ namespace Car_Management
             {
                 new LogWriter(ex);
             }
+        }
+
+        private void listView_md_addr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int row = 0;
+            if (listView_md_addr.SelectedItems.Count > 0)
+            {
+                row = listView_md_addr.SelectedIndices[0];
+            }
+            currentclient = clients[row];
+            if (currentclient.types == connect.net)
+            {
+                lblPort.Text = "设备：" + currentclient.dev;
+            }
+            else
+            {
+               lblPort.Text = "设备：" + currentclient.com;
+            }
+        }
+        private delegate void mcListviewDelegate(int index, string text);
+        private void mcListviewUpdate(int index, string text)
+        {
+            if (listView_md_addr.InvokeRequired)
+            {
+                mcListviewDelegate d = new mcListviewDelegate(mcListviewUpdate);
+                listView_md_addr.Invoke(d, new object[] { index, text });
+            }
+            else
+            {
+                //int idx = Int32.Parse(index);
+                listView_md_addr.Items[index].SubItems[listView_md_State].Text = text;
+            }
+        }
+
+        private void timer_scan_Tick(object sender, EventArgs e)
+        {
+            listView_md_addr.Items.Clear();
+            clients = ReaderControllor.GetClientInfo();
+            foreach (AsyncSocketState client in clients)
+            {
+
+                ListViewItem item = new ListViewItem((this.listView_md_addr.Items.Count + 1).ToString());
+                if (client.types == connect.net)
+                {
+                    item.SubItems.Add(client.ip_addr);
+                    item.SubItems.Add(client.port);
+                    item.SubItems.Add(client.dev);
+                    item.SubItems.Add(client.state);
+                    this.listView_md_addr.Items.Add(item);
+                    this.listView_md_addr.Items[this.listView_md_addr.Items.Count - 1].EnsureVisible();
+                }
+                else if (client.types == connect.com)
+                {
+                    item.SubItems.Add(client.com);
+                    item.SubItems.Add(" -- ");
+                    item.SubItems.Add(client.dev);
+                    item.SubItems.Add(client.state);
+                    this.listView_md_addr.Items.Add(item);
+                    this.listView_md_addr.Items[this.listView_md_addr.Items.Count - 1].EnsureVisible();
+                }
+
+            }
+        }
+
+        private void btnRefreshCars_Click(object sender, EventArgs e)
+        {
+            loadData();
+            dataGridView1.Update();
+            dataGridView1.Refresh();
         }
     }
 }

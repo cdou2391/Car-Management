@@ -185,7 +185,7 @@
             this.Controls.Add(this.txtIDNum);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddClient);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "New_Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Client";
