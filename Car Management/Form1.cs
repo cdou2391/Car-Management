@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Car_Management
 {
@@ -62,6 +63,8 @@ namespace Car_Management
                                 Cars_and_Clients frmCar = new Cars_and_Clients();
                                 frmCar.Show();
                                 this.Hide();
+                                new loginLogs(Global.Technician.Surnames + " " + Global.Technician.Names,
+                                    Global.Technician.ID,Global.Technician.Email,Global.Technician.Position);
                             }
                             else
                             {
@@ -86,12 +89,11 @@ namespace Car_Management
                             };
                         }
                     }
+
                 }
                 else
                 {
                     throw new Exception("Connection to the database was not established.");
-                    //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
@@ -109,6 +111,20 @@ namespace Car_Management
         {
             try
             {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Car Management\Logs\playing.txt";
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Car Management\Logs"));
+                if (File.Exists(path) == true)
+                {
+
+                }
+                else
+                {
+                    using (StreamWriter writer = new StreamWriter(path, true))
+                    {
+                        writer.Close();
+                    }
+                }
+                this.ActiveControl = txtEmail;
                 string connected;
                 DatabaseConnection check = new DatabaseConnection();
                 connected = check.checkDatabase();
@@ -131,14 +147,13 @@ namespace Car_Management
                 else
                 {
                     throw new Exception("Connection to the database was not established.");
-                    //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //new LogWriter(error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 new LogWriter(ex);
+                this.Close();
             }
         }
     }

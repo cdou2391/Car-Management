@@ -63,7 +63,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetDataFromReader.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="loginLogs.cs" />
     <Compile Include="LogWriter.cs" />
     <Compile Include="New Car.cs">
       <SubType>Form</SubType>

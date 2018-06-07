@@ -170,11 +170,9 @@ namespace Car_Management
                     }
                 }
                 btnMultiEPC.Enabled = false;
-                //UpdateLog(start + multiepc + success);
             }
             catch (Exception ex)
             {
-                //UpdateLog(ex.ToString());
                 new LogWriter(ex);
             }
         }
@@ -192,7 +190,6 @@ namespace Car_Management
                     else
                     {
                         ReaderControllor.StopMultiEPC();
-                        //UpdateLog(stop + multiepc + success);
                     }
                 }
                 else
@@ -204,14 +201,12 @@ namespace Car_Management
                     else
                     {
                         ReaderControllor.StopMultiEPC(currentclient);
-                        //UpdateLog(stop + multiepc + success);
                     }
                 }
                 btnMultiEPC.Enabled = true;
             }
             catch (Exception ex)
             {
-                //UpdateLog(ex.ToString());
                 new LogWriter(ex);
             }
         }
@@ -316,41 +311,38 @@ namespace Car_Management
                     str_read_cnt = epcs_list[index].count.ToString();
                     str_ant_id = epcs_list[index].antID.ToString();
                     str_dev = epcs_list[index].dev;
-                    str_ip = epcs_list[index].ClientIP;
+                    //str_ip = epcs_list[index].ClientIP;
                     str_time = epcs_list[index].time;
                     str_rssi = epcs_list[index].RSSI.ToString("f1");
                     direction = epcs_list[index].direction.ToString();
                     totalnum1 += epcs_list[index].count;
-                    string account1 = "";
                     bool Exist = false;
                     int item_index = 0;
-                    long account = 0; ;
-                    using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
-                    {
-                        string querry2 = @"SELECT * FROM Contacts where SerialNumber='" + str_epc + "' ";
-                        DataTable table3 = new DataTable();
-                        SqlDataAdapter adapter3 = new SqlDataAdapter(querry2, conn);
-                        adapter3.Fill(table3);
-
-                        if (table3.Rows.Count > 0)
-                        {
-                            account1 = table3.Rows[0]["Account"].ToString();
-                        }
-                        conn.Close();
-                    }
+                    
                     foreach (ListViewItem viewitem in this.listView_md_epc.Items)
                     {
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                         {
                             conn.Open();
-                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@account where SerialNumber = '"+ str_epc+"'";
-                            
-                            //account = Int64.Parse(account1) - (Int64.Parse(str_read_cnt) * cash);
+                            string querry = "UPDATE Contacts SET Count=@str_read_cnt where SerialNumber = '"+ str_epc+"'";
+                            string querry2 = "UPDATE DeviceData SET AntID=@str_ant_id,PC=@str_pc,RSSI=@str_rssi,Count=@str_read_cnt,Dir=@direction,LastTime=@str_time,DevID=@str_dev where SerialNumber = '" + str_epc + "'";
                             using (SqlCommand cmd = new SqlCommand(querry, conn))
                             {
                                 cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
-                                cmd.Parameters.AddWithValue("@account", account);
                                 cmd.ExecuteNonQuery();
+                            }
+                            conn.Close();
+                            conn.Open();
+                            using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
+                            {
+                                cmd2.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
+                                cmd2.Parameters.AddWithValue("@str_ant_id", @str_ant_id);
+                                cmd2.Parameters.AddWithValue("@str_pc", str_pc);
+                                cmd2.Parameters.AddWithValue("@direction", direction);
+                                cmd2.Parameters.AddWithValue("@str_time", str_time);
+                                cmd2.Parameters.AddWithValue("@str_dev", str_dev);
+                                cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
+                                cmd2.ExecuteNonQuery();
                             }
                             conn.Close();
                         }
@@ -419,10 +411,17 @@ namespace Car_Management
 
         private void btnRefreshLog_Click(object sender, EventArgs e)
         {
-            string path= Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            using (StreamReader streamReader = new StreamReader(path + "\\" + "ErrorsLog.txt", Encoding.UTF8))
+            try
             {
-                txtLog.Text = streamReader.ReadToEnd();
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Car Management\Logs\playing.txt";
+                using (StreamReader streamReader = new StreamReader(path, Encoding.UTF8))
+                {
+                    txtLog.Text = streamReader.ReadToEnd();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

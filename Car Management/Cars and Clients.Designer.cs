@@ -34,10 +34,17 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.btnRefreshCars = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvClients = new System.Windows.Forms.DataGridView();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.bntNewClient = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.listView_md_epc = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,7 +55,15 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.listView_md_addr = new System.Windows.Forms.ListView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblPort = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblNumVhcls = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.checkBoxSingle = new System.Windows.Forms.CheckBox();
@@ -63,42 +78,27 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnRefreshLog = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.bntNewClient = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnAddNew = new System.Windows.Forms.Button();
             this.timer_md_query_Tick = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblNumVhcls = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.listView_md_addr = new System.Windows.Forms.ListView();
             this.timer_scan = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblPort = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.btnRefreshCars = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel10.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
+            this.panel9.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.pnlLog.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -158,6 +158,38 @@
             this.dataGridView1.Size = new System.Drawing.Size(779, 354);
             this.dataGridView1.TabIndex = 0;
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnRefreshCars);
+            this.panel10.Controls.Add(this.btnAddNew);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(779, 30);
+            this.panel10.TabIndex = 1;
+            // 
+            // btnRefreshCars
+            // 
+            this.btnRefreshCars.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnRefreshCars.Location = new System.Drawing.Point(120, 3);
+            this.btnRefreshCars.Name = "btnRefreshCars";
+            this.btnRefreshCars.Size = new System.Drawing.Size(109, 22);
+            this.btnRefreshCars.TabIndex = 4;
+            this.btnRefreshCars.Text = "Refresh";
+            this.btnRefreshCars.UseVisualStyleBackColor = true;
+            this.btnRefreshCars.Click += new System.EventHandler(this.btnRefreshCars_Click);
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddNew.Location = new System.Drawing.Point(5, 3);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(109, 22);
+            this.btnAddNew.TabIndex = 0;
+            this.btnAddNew.Text = "Add New Car";
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -192,6 +224,38 @@
             this.dgvClients.Size = new System.Drawing.Size(779, 355);
             this.dgvClients.TabIndex = 0;
             // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btnRefresh);
+            this.panel9.Controls.Add(this.bntNewClient);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(779, 29);
+            this.panel9.TabIndex = 1;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnRefresh.Location = new System.Drawing.Point(120, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(109, 22);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click_1);
+            // 
+            // bntNewClient
+            // 
+            this.bntNewClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bntNewClient.Location = new System.Drawing.Point(5, 3);
+            this.bntNewClient.Name = "bntNewClient";
+            this.bntNewClient.Size = new System.Drawing.Size(109, 22);
+            this.bntNewClient.TabIndex = 2;
+            this.bntNewClient.Text = "Add New Client";
+            this.bntNewClient.UseVisualStyleBackColor = true;
+            this.bntNewClient.Click += new System.EventHandler(this.bntNewClient_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -204,6 +268,15 @@
             this.tabPage3.Size = new System.Drawing.Size(785, 390);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Active Devices";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.listView_md_epc);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(13, 66);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(769, 321);
+            this.panel8.TabIndex = 116;
             // 
             // listView_md_epc
             // 
@@ -221,7 +294,7 @@
             this.listView_md_epc.GridLines = true;
             this.listView_md_epc.Location = new System.Drawing.Point(0, 0);
             this.listView_md_epc.Name = "listView_md_epc";
-            this.listView_md_epc.Size = new System.Drawing.Size(483, 321);
+            this.listView_md_epc.Size = new System.Drawing.Size(769, 321);
             this.listView_md_epc.TabIndex = 114;
             this.listView_md_epc.UseCompatibleStateImageBehavior = false;
             this.listView_md_epc.View = System.Windows.Forms.View.Details;
@@ -268,6 +341,30 @@
             this.columnHeader9.Text = "Direction";
             this.columnHeader9.Width = 80;
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.listView_md_addr);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Location = new System.Drawing.Point(3, 66);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(10, 321);
+            this.panel7.TabIndex = 115;
+            this.panel7.Visible = false;
+            // 
+            // listView_md_addr
+            // 
+            this.listView_md_addr.BackColor = System.Drawing.Color.White;
+            this.listView_md_addr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView_md_addr.ForeColor = System.Drawing.Color.Black;
+            this.listView_md_addr.GridLines = true;
+            this.listView_md_addr.Location = new System.Drawing.Point(0, 0);
+            this.listView_md_addr.Name = "listView_md_addr";
+            this.listView_md_addr.Size = new System.Drawing.Size(10, 321);
+            this.listView_md_addr.TabIndex = 1;
+            this.listView_md_addr.UseCompatibleStateImageBehavior = false;
+            this.listView_md_addr.View = System.Windows.Forms.View.Details;
+            this.listView_md_addr.SelectedIndexChanged += new System.EventHandler(this.listView_md_addr_SelectedIndexChanged);
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.lblPort);
@@ -289,6 +386,60 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(779, 63);
             this.panel5.TabIndex = 3;
+            // 
+            // lblPort
+            // 
+            this.lblPort.AutoSize = true;
+            this.lblPort.Location = new System.Drawing.Point(41, 38);
+            this.lblPort.Name = "lblPort";
+            this.lblPort.Size = new System.Drawing.Size(37, 13);
+            this.lblPort.TabIndex = 13;
+            this.lblPort.Text = "COM0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Port:";
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(548, 38);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(13, 13);
+            this.lblTime.TabIndex = 11;
+            this.lblTime.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(509, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Time:";
+            // 
+            // lblNumVhcls
+            // 
+            this.lblNumVhcls.AutoSize = true;
+            this.lblNumVhcls.Location = new System.Drawing.Point(406, 38);
+            this.lblNumVhcls.Name = "lblNumVhcls";
+            this.lblNumVhcls.Size = new System.Drawing.Size(13, 13);
+            this.lblNumVhcls.TabIndex = 9;
+            this.lblNumVhcls.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(293, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Numbers of Vehicles:";
             // 
             // btnClear
             // 
@@ -427,28 +578,6 @@
             this.panel3.Size = new System.Drawing.Size(793, 34);
             this.panel3.TabIndex = 1;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRefresh.Location = new System.Drawing.Point(120, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(109, 22);
-            this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click_1);
-            // 
-            // bntNewClient
-            // 
-            this.bntNewClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bntNewClient.Location = new System.Drawing.Point(5, 3);
-            this.bntNewClient.Name = "bntNewClient";
-            this.bntNewClient.Size = new System.Drawing.Size(109, 22);
-            this.bntNewClient.TabIndex = 2;
-            this.bntNewClient.Text = "Add New Client";
-            this.bntNewClient.UseVisualStyleBackColor = true;
-            this.bntNewClient.Click += new System.EventHandler(this.bntNewClient_Click);
-            // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -460,144 +589,15 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnAddNew
-            // 
-            this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddNew.Location = new System.Drawing.Point(5, 3);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(109, 22);
-            this.btnAddNew.TabIndex = 0;
-            this.btnAddNew.Text = "Add New Car";
-            this.btnAddNew.UseVisualStyleBackColor = true;
-            this.btnAddNew.Click += new System.EventHandler(this.button1_Click);
-            // 
             // timer_md_query_Tick
             // 
             this.timer_md_query_Tick.Interval = 1000;
             this.timer_md_query_Tick.Tick += new System.EventHandler(this.timer_md_query_Tick_Tick_1);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(293, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Numbers of Vehicles:";
-            // 
-            // lblNumVhcls
-            // 
-            this.lblNumVhcls.AutoSize = true;
-            this.lblNumVhcls.Location = new System.Drawing.Point(406, 38);
-            this.lblNumVhcls.Name = "lblNumVhcls";
-            this.lblNumVhcls.Size = new System.Drawing.Size(13, 13);
-            this.lblNumVhcls.TabIndex = 9;
-            this.lblNumVhcls.Text = "0";
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(548, 38);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(13, 13);
-            this.lblTime.TabIndex = 11;
-            this.lblTime.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(509, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Time:";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.listView_md_addr);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(3, 66);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(296, 321);
-            this.panel7.TabIndex = 115;
-            this.panel7.Visible = false;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.listView_md_epc);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(299, 66);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(483, 321);
-            this.panel8.TabIndex = 116;
-            // 
-            // listView_md_addr
-            // 
-            this.listView_md_addr.BackColor = System.Drawing.Color.White;
-            this.listView_md_addr.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView_md_addr.ForeColor = System.Drawing.Color.Black;
-            this.listView_md_addr.GridLines = true;
-            this.listView_md_addr.Location = new System.Drawing.Point(0, 0);
-            this.listView_md_addr.Name = "listView_md_addr";
-            this.listView_md_addr.Size = new System.Drawing.Size(296, 321);
-            this.listView_md_addr.TabIndex = 1;
-            this.listView_md_addr.UseCompatibleStateImageBehavior = false;
-            this.listView_md_addr.View = System.Windows.Forms.View.Details;
-            this.listView_md_addr.SelectedIndexChanged += new System.EventHandler(this.listView_md_addr_SelectedIndexChanged);
-            // 
             // timer_scan
             // 
             this.timer_scan.Interval = 1000;
             this.timer_scan.Tick += new System.EventHandler(this.timer_scan_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Port:";
-            // 
-            // lblPort
-            // 
-            this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(41, 38);
-            this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(37, 13);
-            this.lblPort.TabIndex = 13;
-            this.lblPort.Text = "COM0";
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.btnRefresh);
-            this.panel9.Controls.Add(this.bntNewClient);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(3, 3);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(779, 29);
-            this.panel9.TabIndex = 1;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.btnRefreshCars);
-            this.panel10.Controls.Add(this.btnAddNew);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(3, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(779, 30);
-            this.panel10.TabIndex = 1;
-            // 
-            // btnRefreshCars
-            // 
-            this.btnRefreshCars.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRefreshCars.Location = new System.Drawing.Point(120, 3);
-            this.btnRefreshCars.Name = "btnRefreshCars";
-            this.btnRefreshCars.Size = new System.Drawing.Size(109, 22);
-            this.btnRefreshCars.TabIndex = 4;
-            this.btnRefreshCars.Text = "Refresh";
-            this.btnRefreshCars.UseVisualStyleBackColor = true;
-            this.btnRefreshCars.Click += new System.EventHandler(this.btnRefreshCars_Click);
             // 
             // Cars_and_Clients
             // 
@@ -618,10 +618,14 @@
             this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel10.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
+            this.panel9.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -629,10 +633,6 @@
             this.pnlLog.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
