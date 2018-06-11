@@ -137,9 +137,9 @@ namespace Car_Management
                 if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
                 {
                     timer_md_query_Tick.Enabled = false;
+                    btnStop.PerformClick();
                 }
                 btnStartPort.Text = "Start";
-                //UpdateLog(closeserial + success);
             }
         }
 
@@ -292,6 +292,7 @@ namespace Car_Management
         string str_time = "";
         string str_rssi = "";
         string direction = "";
+        const int price= 100;
         private void timer_md_query_Tick_Tick_1(object sender, EventArgs e)
         {
             try
@@ -316,6 +317,7 @@ namespace Car_Management
                     str_rssi = epcs_list[index].RSSI.ToString("f1");
                     direction = epcs_list[index].direction.ToString();
                     totalnum1 += epcs_list[index].count;
+                    double pri;
                     bool Exist = false;
                     int item_index = 0;
                     
@@ -324,11 +326,17 @@ namespace Car_Management
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                         {
                             conn.Open();
-                            string querry = "UPDATE Contacts SET Count=@str_read_cnt where SerialNumber = '"+ str_epc+"'";
+                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@pric where SerialNumber = '"+ str_epc+"'";
                             string querry2 = "UPDATE DeviceData SET AntID=@str_ant_id,PC=@str_pc,RSSI=@str_rssi,Count=@str_read_cnt,Dir=@direction,LastTime=@str_time,DevID=@str_dev where SerialNumber = '" + str_epc + "'";
+                            string querry3 = "SELECT Account from CONTACTS where SerialNumber = '" + str_epc + "'";
+                            using (SqlCommand cmd3=new SqlCommand(querry3, conn))
+                            {
+                                pri = Convert.ToDouble(cmd3.ExecuteScalar());
+                            }
                             using (SqlCommand cmd = new SqlCommand(querry, conn))
                             {
                                 cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
+                                cmd.Parameters.AddWithValue("@pric",pri- (Convert.ToDouble(str_read_cnt) * price));
                                 cmd.ExecuteNonQuery();
                             }
                             conn.Close();
@@ -343,8 +351,8 @@ namespace Car_Management
                                 cmd2.Parameters.AddWithValue("@str_dev", str_dev);
                                 cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
                                 cmd2.ExecuteNonQuery();
+                                conn.Close();
                             }
-                            conn.Close();
                         }
                         if ((viewitem.SubItems[listView_md_epc_EPC].Text == str_epc) && (viewitem.SubItems[listView_md_epc_IP].Text == str_dev))
                         {
@@ -413,7 +421,7 @@ namespace Car_Management
         {
             try
             {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Car Management\Logs\playing.txt";
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Car Management\Logs\ErrorLogs.txt";
                 using (StreamReader streamReader = new StreamReader(path, Encoding.UTF8))
                 {
                     txtLog.Text = streamReader.ReadToEnd();
@@ -427,22 +435,8 @@ namespace Car_Management
 
         private void Cars_and_Clients_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                serialisstart = false;
-                ReaderControllor.SerialPortClose();
-                if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
-                {
-                    timer_md_query_Tick.Enabled = false;
-                }
-                btnStartPort.Text = "Start";
-                btnStop.PerformClick();
-
-            }
-            catch(Exception ex)
-            {
-                new LogWriter(ex);
-            }
+            btnStop.PerformClick();
+            timer_md_query_Tick.Enabled = false;
         }
 
         private void listView_md_addr_SelectedIndexChanged(object sender, EventArgs e)

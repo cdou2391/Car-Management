@@ -25,7 +25,7 @@ namespace Car_Management
             message += Environment.NewLine;
             message += "-----------------------------------------------------------";
             message += Environment.NewLine;
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Car Management\Logs\playing.txt";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Car Management\Logs\ErrorLogs.txt";
             Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Car Management\Logs"));
 
             using (StreamWriter writer = new StreamWriter(path, true))
