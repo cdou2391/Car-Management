@@ -273,9 +273,9 @@
             // 
             this.panel8.Controls.Add(this.listView_md_epc);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(13, 66);
+            this.panel8.Location = new System.Drawing.Point(104, 66);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(769, 321);
+            this.panel8.Size = new System.Drawing.Size(678, 321);
             this.panel8.TabIndex = 116;
             // 
             // listView_md_epc
@@ -294,7 +294,7 @@
             this.listView_md_epc.GridLines = true;
             this.listView_md_epc.Location = new System.Drawing.Point(0, 0);
             this.listView_md_epc.Name = "listView_md_epc";
-            this.listView_md_epc.Size = new System.Drawing.Size(769, 321);
+            this.listView_md_epc.Size = new System.Drawing.Size(678, 321);
             this.listView_md_epc.TabIndex = 114;
             this.listView_md_epc.UseCompatibleStateImageBehavior = false;
             this.listView_md_epc.View = System.Windows.Forms.View.Details;
@@ -347,7 +347,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(3, 66);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(10, 321);
+            this.panel7.Size = new System.Drawing.Size(101, 321);
             this.panel7.TabIndex = 115;
             this.panel7.Visible = false;
             // 
@@ -359,7 +359,7 @@
             this.listView_md_addr.GridLines = true;
             this.listView_md_addr.Location = new System.Drawing.Point(0, 0);
             this.listView_md_addr.Name = "listView_md_addr";
-            this.listView_md_addr.Size = new System.Drawing.Size(10, 321);
+            this.listView_md_addr.Size = new System.Drawing.Size(101, 321);
             this.listView_md_addr.TabIndex = 1;
             this.listView_md_addr.UseCompatibleStateImageBehavior = false;
             this.listView_md_addr.View = System.Windows.Forms.View.Details;

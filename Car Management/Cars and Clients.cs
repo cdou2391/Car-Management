@@ -94,6 +94,7 @@ namespace Car_Management
                     dataBits = SerialPortForm.dataBits;
                     parity = SerialPortForm.parity;
                     stopbits = SerialPortForm.stopbits;
+                    MessageBox.Show("Port Succesfully connected!");
                 }
             }
             catch(Exception ex)
@@ -317,56 +318,111 @@ namespace Car_Management
                     str_rssi = epcs_list[index].RSSI.ToString("f1");
                     direction = epcs_list[index].direction.ToString();
                     totalnum1 += epcs_list[index].count;
+                    string scanTime;
                     double pri;
                     bool Exist = false;
                     int item_index = 0;
-                    
+                    string count2;
+
                     foreach (ListViewItem viewitem in this.listView_md_epc.Items)
                     {
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                         {
                             conn.Open();
-                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@pric where SerialNumber = '"+ str_epc+"'";
+                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@pric where SerialNumber = '" + str_epc + "'";
                             string querry2 = "UPDATE DeviceData SET AntID=@str_ant_id,PC=@str_pc,RSSI=@str_rssi,Count=@str_read_cnt,Dir=@direction,LastTime=@str_time,DevID=@str_dev where SerialNumber = '" + str_epc + "'";
                             string querry3 = "SELECT Account from CONTACTS where SerialNumber = '" + str_epc + "'";
-                            using (SqlCommand cmd3=new SqlCommand(querry3, conn))
+                            string querry4 = "SELECT LastTime from DeviceData where SerialNumber = '" + str_epc + "'";
+                            using (SqlCommand cmd3 = new SqlCommand(querry3, conn))
                             {
                                 pri = Convert.ToDouble(cmd3.ExecuteScalar());
                             }
-                            using (SqlCommand cmd = new SqlCommand(querry, conn))
+                            using (SqlCommand cmd4 = new SqlCommand(querry4, conn))
                             {
-                                cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
-                                cmd.Parameters.AddWithValue("@pric",pri- (Convert.ToDouble(str_read_cnt) * price));
-                                cmd.ExecuteNonQuery();
+                                scanTime = cmd4.ExecuteScalar().ToString();
                             }
-                            conn.Close();
-                            conn.Open();
-                            using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
+                            int results = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalMinutes;
+
+                            //switch (results)
+                            //{
+                            //    case 0:
+                            //        MessageBox.Show("Hello 0");
+                            //        break;
+                            //    case 1:
+                            //        MessageBox.Show("Hello 0");
+                            //        break;
+                            //    default:
+                            //        MessageBox.Show("Hello D");
+                            //        break;
+
+                            //}
+                            if (results >= 1)
                             {
-                                cmd2.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
-                                cmd2.Parameters.AddWithValue("@str_ant_id", @str_ant_id);
-                                cmd2.Parameters.AddWithValue("@str_pc", str_pc);
-                                cmd2.Parameters.AddWithValue("@direction", direction);
-                                cmd2.Parameters.AddWithValue("@str_time", str_time);
-                                cmd2.Parameters.AddWithValue("@str_dev", str_dev);
-                                cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
-                                cmd2.ExecuteNonQuery();
+                                MessageBox.Show("More than 1 minute");
+                                count2 = (Convert.ToInt32(str_read_cnt) + 1).ToString();
+                                using (SqlCommand cmd = new SqlCommand(querry, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@str_read_cnt", count2);
+                                    cmd.Parameters.AddWithValue("@pric", pri - (Convert.ToDouble(count2) * price));
+                                    cmd.ExecuteNonQuery();
+
+                                }
                                 conn.Close();
+                                conn.Open();
+                                using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
+                                {
+                                    cmd2.Parameters.AddWithValue("@str_read_cnt", count2);
+                                    cmd2.Parameters.AddWithValue("@str_ant_id", str_ant_id);
+                                    cmd2.Parameters.AddWithValue("@str_pc", str_pc);
+                                    cmd2.Parameters.AddWithValue("@direction", direction);
+                                    cmd2.Parameters.AddWithValue("@str_time", str_time);
+                                    cmd2.Parameters.AddWithValue("@str_dev", str_dev);
+                                    cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
+                                    cmd2.ExecuteNonQuery();
+
+                                    conn.Close();
+                                }
                             }
+                            else
+                            {
+                                MessageBox.Show("Less than 1 minute");
+                                count2 = "1";
+                                using (SqlCommand cmd = new SqlCommand(querry, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@str_read_cnt", count2);
+                                    cmd.Parameters.AddWithValue("@pric", pri - (Convert.ToDouble(count2) * price));
+                                    cmd.ExecuteNonQuery();
+                                }
+                                conn.Close();
+                                conn.Open();
+                                using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
+                                {
+                                    cmd2.Parameters.AddWithValue("@str_read_cnt", count2);
+                                    cmd2.Parameters.AddWithValue("@str_ant_id", @str_ant_id);
+                                    cmd2.Parameters.AddWithValue("@str_pc", str_pc);
+                                    cmd2.Parameters.AddWithValue("@direction", direction);
+                                    cmd2.Parameters.AddWithValue("@str_time", str_time);
+                                    cmd2.Parameters.AddWithValue("@str_dev", str_dev);
+                                    cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
+                                    cmd2.ExecuteNonQuery();
+                                    conn.Close();
+                                }
+                            }
+
                         }
                         if ((viewitem.SubItems[listView_md_epc_EPC].Text == str_epc) && (viewitem.SubItems[listView_md_epc_IP].Text == str_dev))
                         {
                             viewitem.SubItems[listView_md_epc_AntID].Text = str_ant_id;
-                            viewitem.SubItems[listView_md_epc_Count].Text = str_read_cnt;
+                            viewitem.SubItems[listView_md_epc_Count].Text = count2;
                             viewitem.SubItems[listView_md_epc_Last_Time].Text = str_time;
                             viewitem.SubItems[listView_md_epc_PC].Text = str_pc;
                             viewitem.SubItems[listView_md_epc_Rssi].Text = str_rssi;
                             viewitem.SubItems[listView_md_epc_Direction].Text = direction;
-
                             Exist = true;
-                            break;
                         }
-                        item_index++;
+                        //item_index++;
+                        //timer_md_query_Tick.Stop();
+                        //timer_md_query_Tick.Start();
                     }
                     if (!Exist)
                     {
@@ -382,13 +438,15 @@ namespace Car_Management
                         this.listView_md_epc.Items.Add(item);
                         this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].EnsureVisible();
                         this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].Selected = true;
-                        this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].BackColor = System.Drawing.Color.FromArgb(red:200,blue:200,green:200);
+                        this.listView_md_epc.Items[this.listView_md_epc.Items.Count - 1].BackColor = System.Drawing.Color.FromArgb(red: 200, blue: 200, green: 200);
+                        break;
                     }
                 }
-                totalnum2 = totalnum1;
-
             }
-            catch(Exception ex)
+            //totalnum2 = totalnum1;
+
+
+            catch (Exception ex)
             {
                 new LogWriter(ex);
             }
