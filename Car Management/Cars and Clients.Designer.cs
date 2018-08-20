@@ -81,6 +81,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.timer_md_query_Tick = new System.Windows.Forms.Timer(this.components);
             this.timer_scan = new System.Windows.Forms.Timer(this.components);
+            this.btnShwList = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -138,6 +140,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 33);
@@ -160,6 +163,7 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.btnShwList);
             this.panel10.Controls.Add(this.btnRefreshCars);
             this.panel10.Controls.Add(this.btnAddNew);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
@@ -599,6 +603,25 @@
             this.timer_scan.Interval = 1000;
             this.timer_scan.Tick += new System.EventHandler(this.timer_scan_Tick);
             // 
+            // btnShwList
+            // 
+            this.btnShwList.Location = new System.Drawing.Point(364, 1);
+            this.btnShwList.Name = "btnShwList";
+            this.btnShwList.Size = new System.Drawing.Size(75, 23);
+            this.btnShwList.TabIndex = 5;
+            this.btnShwList.Text = "Show List";
+            this.btnShwList.UseVisualStyleBackColor = true;
+            this.btnShwList.Click += new System.EventHandler(this.btnShwList_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(426, 121);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(353, 236);
+            this.textBox2.TabIndex = 1;
+            // 
             // Cars_and_Clients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,6 +640,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel10.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -691,5 +715,7 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button btnRefreshCars;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btnShwList;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

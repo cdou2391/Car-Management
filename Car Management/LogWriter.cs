@@ -28,9 +28,19 @@ namespace Car_Management
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + @"Car Management\Logs\ErrorLogs.txt";
             Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Car Management\Logs"));
 
+            string currentLog = String.Empty;
+            if (File.Exists(path))
+            {
+                currentLog = File.ReadAllText(path);
+                File.Delete(path);
+            }
+            else
+            {
+                File.Create(path);
+            }
             using (StreamWriter writer = new StreamWriter(path, true))
             {
-                writer.WriteLine(message);
+                writer.WriteLine(message + currentLog);
                 writer.Close();
             }
         }

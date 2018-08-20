@@ -320,6 +320,7 @@ namespace Car_Management
                     totalnum1 += epcs_list[index].count;
                     string scanTime;
                     double pri;
+                    double price2=0;
                     bool Exist = false;
                     int item_index = 0;
                     string count2;
@@ -341,29 +342,17 @@ namespace Car_Management
                             {
                                 scanTime = cmd4.ExecuteScalar().ToString();
                             }
-                            int results = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalMinutes;
-
-                            //switch (results)
-                            //{
-                            //    case 0:
-                            //        MessageBox.Show("Hello 0");
-                            //        break;
-                            //    case 1:
-                            //        MessageBox.Show("Hello 0");
-                            //        break;
-                            //    default:
-                            //        MessageBox.Show("Hello D");
-                            //        break;
-
-                            //}
-                            if (results >= 1)
+                            int results = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalMilliseconds;
+                            
+                            if (results >= 10000)
                             {
-                                MessageBox.Show("More than 1 minute");
-                                count2 = (Convert.ToInt32(str_read_cnt) + 1).ToString();
+                               // MessageBox.Show("More than 1 minute");
+                                //count2 = (Convert.ToInt32(str_read_cnt) + 1).ToString();
                                 using (SqlCommand cmd = new SqlCommand(querry, conn))
                                 {
-                                    cmd.Parameters.AddWithValue("@str_read_cnt", count2);
-                                    cmd.Parameters.AddWithValue("@pric", pri - (Convert.ToDouble(count2) * price));
+                                    cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
+                                    price2 = pri - (Convert.ToDouble(str_read_cnt) * price);
+                                    cmd.Parameters.AddWithValue("@pric", price2);
                                     cmd.ExecuteNonQuery();
 
                                 }
@@ -371,7 +360,7 @@ namespace Car_Management
                                 conn.Open();
                                 using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
                                 {
-                                    cmd2.Parameters.AddWithValue("@str_read_cnt", count2);
+                                    cmd2.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
                                     cmd2.Parameters.AddWithValue("@str_ant_id", str_ant_id);
                                     cmd2.Parameters.AddWithValue("@str_pc", str_pc);
                                     cmd2.Parameters.AddWithValue("@direction", direction);
@@ -382,38 +371,39 @@ namespace Car_Management
 
                                     conn.Close();
                                 }
+                                results = 0;
                             }
                             else
                             {
-                                MessageBox.Show("Less than 1 minute");
-                                count2 = "1";
+                                //MessageBox.Show("Less than 1 minute");
+                                //count2 = "1";
                                 using (SqlCommand cmd = new SqlCommand(querry, conn))
                                 {
-                                    cmd.Parameters.AddWithValue("@str_read_cnt", count2);
-                                    cmd.Parameters.AddWithValue("@pric", pri - (Convert.ToDouble(count2) * price));
+                                    cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
+                                    cmd.Parameters.AddWithValue("@pric", pri);
                                     cmd.ExecuteNonQuery();
                                 }
-                                conn.Close();
-                                conn.Open();
-                                using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
-                                {
-                                    cmd2.Parameters.AddWithValue("@str_read_cnt", count2);
-                                    cmd2.Parameters.AddWithValue("@str_ant_id", @str_ant_id);
-                                    cmd2.Parameters.AddWithValue("@str_pc", str_pc);
-                                    cmd2.Parameters.AddWithValue("@direction", direction);
-                                    cmd2.Parameters.AddWithValue("@str_time", str_time);
-                                    cmd2.Parameters.AddWithValue("@str_dev", str_dev);
-                                    cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
-                                    cmd2.ExecuteNonQuery();
-                                    conn.Close();
-                                }
+                                //conn.Close();
+                                //conn.Open();
+                                //using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
+                                //{
+                                //    cmd2.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
+                                //    cmd2.Parameters.AddWithValue("@str_ant_id", @str_ant_id);
+                                //    cmd2.Parameters.AddWithValue("@str_pc", str_pc);
+                                //    cmd2.Parameters.AddWithValue("@direction", direction);
+                                //    cmd2.Parameters.AddWithValue("@str_time", str_time);
+                                //    cmd2.Parameters.AddWithValue("@str_dev", str_dev);
+                                //    cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
+                                //    cmd2.ExecuteNonQuery();
+                                //    conn.Close();
+                                //}
                             }
 
                         }
                         if ((viewitem.SubItems[listView_md_epc_EPC].Text == str_epc) && (viewitem.SubItems[listView_md_epc_IP].Text == str_dev))
                         {
                             viewitem.SubItems[listView_md_epc_AntID].Text = str_ant_id;
-                            viewitem.SubItems[listView_md_epc_Count].Text = count2;
+                            viewitem.SubItems[listView_md_epc_Count].Text = str_read_cnt;
                             viewitem.SubItems[listView_md_epc_Last_Time].Text = str_time;
                             viewitem.SubItems[listView_md_epc_PC].Text = str_pc;
                             viewitem.SubItems[listView_md_epc_Rssi].Text = str_rssi;
@@ -564,6 +554,26 @@ namespace Car_Management
             loadData();
             dataGridView1.Update();
             dataGridView1.Refresh();
+        }
+
+        private void btnShwList_Click(object sender, EventArgs e)
+        {
+            foreach (_epc_t d in epcs_list)
+            {
+                textBox2.Text += d.ToString() + "\r\n";
+            }
+            for (int index = 0; index < epcs_list.Count; index++)
+            {
+                textBox2.Text = "Tag ID: " + epcs_list[index].epc + "\r\n"
+                     + "\r\n" + epcs_list[index].PC.ToString("X2")
+                     + "\r\n" + "Count: " + epcs_list[index].count.ToString()
+                     + "\r\n" + "Device ID: " + epcs_list[index].antID.ToString()
+                     + "\r\n" + "Dev: " + epcs_list[index].dev
+                     + "\r\n" + "Scan Time: " + epcs_list[index].time
+                     + "\r\n" + "Rssi: " + epcs_list[index].RSSI.ToString("f1")
+                     + "\r\n" + "Direction: " + epcs_list[index].direction.ToString();
+                //str_ip = epcs_list[index].ClientIP;
+            }
         }
     }
 }
