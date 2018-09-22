@@ -117,10 +117,10 @@ namespace Car_Management
                 try
                 {
                     ReaderControllor.ComStart(portname, baudRate, dataBits, parity, stopbits);
-                    if (timer_md_query_Tick.Enabled == false)
-                    {
-                        timer_md_query_Tick.Enabled = true;
-                    }
+                    //if (timer_md_query_Tick.Enabled == false)
+                    //{
+                    //    timer_md_query_Tick.Enabled = true;
+                    //}
                     serialisstart = true;
                     lblPort.Text = textBox1.Text;
                     btnStartPort.Text = "Stop";
@@ -133,13 +133,13 @@ namespace Car_Management
             }
             else
             {
-                serialisstart = false;
+                //serialisstart = false;
                 ReaderControllor.SerialPortClose();
-                if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
-                {
-                    timer_md_query_Tick.Enabled = false;
-                    btnStop.PerformClick();
-                }
+                //if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
+                //{
+                //    timer_md_query_Tick.Enabled = false;
+                //    btnStop.PerformClick();
+                //}
                 btnStartPort.Text = "Start";
             }
         }
@@ -153,10 +153,18 @@ namespace Car_Management
                     if (checkBoxSingle.Checked == true)
                     {
                         ReaderControllor.SingleEPC();
+                        if (timer_md_query_Tick.Enabled == false)
+                        {
+                            timer_md_query_Tick.Enabled = true;
+                        }
                     }
                     else
                     {
                         ReaderControllor.SatrtMultiEPC();
+                        if (timer_md_query_Tick.Enabled == false)
+                        {
+                            timer_md_query_Tick.Enabled = true;
+                        }
                     }
                 }
                 else
@@ -164,10 +172,18 @@ namespace Car_Management
                     if (checkBoxSingle.Checked == true)
                     {
                         ReaderControllor.SingleEPC(currentclient);
+                        if (timer_md_query_Tick.Enabled == false)
+                        {
+                            timer_md_query_Tick.Enabled = true;
+                        }
                     }
                     else
                     {
                         ReaderControllor.SatrtMultiEPC(currentclient);
+                        if (timer_md_query_Tick.Enabled == false)
+                        {
+                            timer_md_query_Tick.Enabled = true;
+                        }
                     }
                 }
                 btnMultiEPC.Enabled = false;
@@ -182,26 +198,41 @@ namespace Car_Management
         {
             try
             {
+                serialisstart = false;
                 if (checkBoxMulti.Checked == true)
                 {
                     if (checkBoxSingle.Checked == true)
                     {
-                        ;
+                        if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
+                        {
+                            timer_md_query_Tick.Enabled = false;
+                        }
                     }
                     else
                     {
                         ReaderControllor.StopMultiEPC();
+                        if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
+                        {
+                            timer_md_query_Tick.Enabled = false;
+                        }
                     }
                 }
                 else
                 {
                     if (checkBoxSingle.Checked == true)
                     {
-                        ;
+                        if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
+                        {
+                            timer_md_query_Tick.Enabled = false;
+                        }
                     }
                     else
                     {
                         ReaderControllor.StopMultiEPC(currentclient);
+                        if (serverisstart == false && serialisstart == false && timer_md_query_Tick.Enabled == true)
+                        {
+                            timer_md_query_Tick.Enabled = false;
+                        }
                     }
                 }
                 btnMultiEPC.Enabled = true;
@@ -330,8 +361,6 @@ namespace Car_Management
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                         {
                             conn.Open();
-                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@pric where SerialNumber = '" + str_epc + "'";
-                            string querry2 = "UPDATE DeviceData SET AntID=@str_ant_id,PC=@str_pc,RSSI=@str_rssi,Count=@str_read_cnt,Dir=@direction,LastTime=@str_time,DevID=@str_dev where SerialNumber = '" + str_epc + "'";
                             string querry3 = "SELECT Account from CONTACTS where SerialNumber = '" + str_epc + "'";
                             string querry4 = "SELECT LastTime from DeviceData where SerialNumber = '" + str_epc + "'";
                             using (SqlCommand cmd3 = new SqlCommand(querry3, conn))
@@ -342,22 +371,28 @@ namespace Car_Management
                             {
                                 scanTime = cmd4.ExecuteScalar().ToString();
                             }
-                            int results = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalMilliseconds;
+                            conn.Close();
+                        }
+                        using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
+                        {
+                            conn.Open();
+                            int scanInterval = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalSeconds;
+                            scanTime = DateTime.Now.ToString();
+                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@pric where SerialNumber = '" + str_epc + "'";
+                            string querry2 = "UPDATE DeviceData SET AntID=@str_ant_id,PC=@str_pc,RSSI=@str_rssi,Count=@str_read_cnt,Dir=@direction,LastTime=@str_time,DevID=@str_dev where SerialNumber = '" + str_epc + "'";
                             
-                            if (results >= 10000)
+                            if (scanInterval > 30)
                             {
-                               // MessageBox.Show("More than 1 minute");
-                                //count2 = (Convert.ToInt32(str_read_cnt) + 1).ToString();
+                               // MessageBox.Show(scanInterval.ToString());
                                 using (SqlCommand cmd = new SqlCommand(querry, conn))
                                 {
+                                    price2 = pri - price;
                                     cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
-                                    price2 = pri - (Convert.ToDouble(str_read_cnt) * price);
                                     cmd.Parameters.AddWithValue("@pric", price2);
                                     cmd.ExecuteNonQuery();
 
                                 }
-                                conn.Close();
-                                conn.Open();
+
                                 using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
                                 {
                                     cmd2.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
@@ -368,38 +403,17 @@ namespace Car_Management
                                     cmd2.Parameters.AddWithValue("@str_dev", str_dev);
                                     cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
                                     cmd2.ExecuteNonQuery();
-
-                                    conn.Close();
                                 }
-                                results = 0;
+                                conn.Close();
+                                scanInterval = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalSeconds;
                             }
                             else
                             {
-                                //MessageBox.Show("Less than 1 minute");
-                                //count2 = "1";
-                                using (SqlCommand cmd = new SqlCommand(querry, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
-                                    cmd.Parameters.AddWithValue("@pric", pri);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                //conn.Close();
-                                //conn.Open();
-                                //using (SqlCommand cmd2 = new SqlCommand(querry2, conn))
-                                //{
-                                //    cmd2.Parameters.AddWithValue("@str_read_cnt", str_read_cnt);
-                                //    cmd2.Parameters.AddWithValue("@str_ant_id", @str_ant_id);
-                                //    cmd2.Parameters.AddWithValue("@str_pc", str_pc);
-                                //    cmd2.Parameters.AddWithValue("@direction", direction);
-                                //    cmd2.Parameters.AddWithValue("@str_time", str_time);
-                                //    cmd2.Parameters.AddWithValue("@str_dev", str_dev);
-                                //    cmd2.Parameters.AddWithValue("@str_rssi", str_rssi);
-                                //    cmd2.ExecuteNonQuery();
-                                //    conn.Close();
-                                //}
+                                conn.Close();
                             }
-
+                            
                         }
+                        
                         if ((viewitem.SubItems[listView_md_epc_EPC].Text == str_epc) && (viewitem.SubItems[listView_md_epc_IP].Text == str_dev))
                         {
                             viewitem.SubItems[listView_md_epc_AntID].Text = str_ant_id;
@@ -555,25 +569,38 @@ namespace Car_Management
             dataGridView1.Update();
             dataGridView1.Refresh();
         }
-
+        bool btnTestClicked = false;
         private void btnShwList_Click(object sender, EventArgs e)
         {
-            foreach (_epc_t d in epcs_list)
-            {
-                textBox2.Text += d.ToString() + "\r\n";
-            }
-            for (int index = 0; index < epcs_list.Count; index++)
-            {
-                textBox2.Text = "Tag ID: " + epcs_list[index].epc + "\r\n"
-                     + "\r\n" + epcs_list[index].PC.ToString("X2")
-                     + "\r\n" + "Count: " + epcs_list[index].count.ToString()
-                     + "\r\n" + "Device ID: " + epcs_list[index].antID.ToString()
-                     + "\r\n" + "Dev: " + epcs_list[index].dev
-                     + "\r\n" + "Scan Time: " + epcs_list[index].time
-                     + "\r\n" + "Rssi: " + epcs_list[index].RSSI.ToString("f1")
-                     + "\r\n" + "Direction: " + epcs_list[index].direction.ToString();
-                //str_ip = epcs_list[index].ClientIP;
-            }
+        //    btnTestClicked = true;
+
+        //    //epcs_list.Add("E2 - 00 - 00 - 16 - 62 - 10 - 02 - 72 - 09 - 80 - B5 - C8");
+        //    //epcs_list.Add();
+        //    //epcs_list.Add();
+        //    //epcs_list.Add();
+        //    //epcs_list.Add();
+        //    //epcs_list.Add();
+        //    //epcs_list.Add();
+        //    //epcs_list.Add();
+        //    //epcs_list.Add();
+
+        //    foreach (_epc_t d in epcs_list)
+        //    {
+        //        textBox2.Text += d.ToString() + "\r\n";
+        //    }
+        //    for (int index = 0; index < epcs_list.Count; index++)
+        //    {
+        //        textBox2.Text = "Tag ID: " + epcs_list[index].epc + "\r\n"
+        //             + "\r\n" + epcs_list[index].PC.ToString("X2")
+        //             + "\r\n" + "Count: " + epcs_list[index].count.ToString()
+        //             + "\r\n" + "Device ID: " + epcs_list[index].antID.ToString()
+        //             + "\r\n" + "Dev: " + epcs_list[index].dev
+        //             + "\r\n" + "Scan Time: " + epcs_list[index].time
+        //             + "\r\n" + "Rssi: " + epcs_list[index].RSSI.ToString("f1")
+        //             + "\r\n" + "Direction: " + epcs_list[index].direction.ToString()
+        //             + "\r\n" + "ClientIP: "+ epcs_list[index].ClientIP;
+        //    }
+            
         }
     }
 }

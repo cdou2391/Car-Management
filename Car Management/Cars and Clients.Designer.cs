@@ -35,6 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.btnShwList = new System.Windows.Forms.Button();
             this.btnRefreshCars = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -81,8 +82,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.timer_md_query_Tick = new System.Windows.Forms.Timer(this.components);
             this.timer_scan = new System.Windows.Forms.Timer(this.components);
-            this.btnShwList = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -109,8 +108,9 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(793, 450);
+            this.panel1.Size = new System.Drawing.Size(1057, 554);
             this.panel1.TabIndex = 0;
             // 
             // tabControl1
@@ -121,9 +121,10 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(793, 416);
+            this.tabControl1.Size = new System.Drawing.Size(1057, 512);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -131,21 +132,22 @@
             this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.panel10);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(785, 390);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1049, 483);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cars";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 33);
+            this.panel2.Location = new System.Drawing.Point(4, 41);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(779, 354);
+            this.panel2.Size = new System.Drawing.Size(1041, 438);
             this.panel2.TabIndex = 0;
             // 
             // dataGridView1
@@ -157,8 +159,9 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(779, 354);
+            this.dataGridView1.Size = new System.Drawing.Size(1041, 438);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel10
@@ -167,17 +170,31 @@
             this.panel10.Controls.Add(this.btnRefreshCars);
             this.panel10.Controls.Add(this.btnAddNew);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Location = new System.Drawing.Point(4, 4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(779, 30);
+            this.panel10.Size = new System.Drawing.Size(1041, 37);
             this.panel10.TabIndex = 1;
+            // 
+            // btnShwList
+            // 
+            this.btnShwList.Location = new System.Drawing.Point(485, 1);
+            this.btnShwList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShwList.Name = "btnShwList";
+            this.btnShwList.Size = new System.Drawing.Size(100, 28);
+            this.btnShwList.TabIndex = 5;
+            this.btnShwList.Text = "Show List";
+            this.btnShwList.UseVisualStyleBackColor = true;
+            this.btnShwList.Visible = false;
+            this.btnShwList.Click += new System.EventHandler(this.btnShwList_Click);
             // 
             // btnRefreshCars
             // 
             this.btnRefreshCars.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRefreshCars.Location = new System.Drawing.Point(120, 3);
+            this.btnRefreshCars.Location = new System.Drawing.Point(160, 4);
+            this.btnRefreshCars.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefreshCars.Name = "btnRefreshCars";
-            this.btnRefreshCars.Size = new System.Drawing.Size(109, 22);
+            this.btnRefreshCars.Size = new System.Drawing.Size(145, 27);
             this.btnRefreshCars.TabIndex = 4;
             this.btnRefreshCars.Text = "Refresh";
             this.btnRefreshCars.UseVisualStyleBackColor = true;
@@ -186,9 +203,10 @@
             // btnAddNew
             // 
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddNew.Location = new System.Drawing.Point(5, 3);
+            this.btnAddNew.Location = new System.Drawing.Point(7, 4);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(109, 22);
+            this.btnAddNew.Size = new System.Drawing.Size(145, 27);
             this.btnAddNew.TabIndex = 0;
             this.btnAddNew.Text = "Add New Car";
             this.btnAddNew.UseVisualStyleBackColor = true;
@@ -199,10 +217,11 @@
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.panel9);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(785, 390);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Size = new System.Drawing.Size(1049, 483);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clients";
             // 
@@ -210,9 +229,10 @@
             // 
             this.panel4.Controls.Add(this.dgvClients);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 32);
+            this.panel4.Location = new System.Drawing.Point(4, 40);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(779, 355);
+            this.panel4.Size = new System.Drawing.Size(1041, 439);
             this.panel4.TabIndex = 0;
             // 
             // dgvClients
@@ -224,8 +244,9 @@
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClients.Location = new System.Drawing.Point(0, 0);
+            this.dgvClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvClients.Name = "dgvClients";
-            this.dgvClients.Size = new System.Drawing.Size(779, 355);
+            this.dgvClients.Size = new System.Drawing.Size(1041, 439);
             this.dgvClients.TabIndex = 0;
             // 
             // panel9
@@ -233,17 +254,19 @@
             this.panel9.Controls.Add(this.btnRefresh);
             this.panel9.Controls.Add(this.bntNewClient);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Location = new System.Drawing.Point(4, 4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(779, 29);
+            this.panel9.Size = new System.Drawing.Size(1041, 36);
             this.panel9.TabIndex = 1;
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnRefresh.Location = new System.Drawing.Point(120, 3);
+            this.btnRefresh.Location = new System.Drawing.Point(160, 4);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(109, 22);
+            this.btnRefresh.Size = new System.Drawing.Size(145, 27);
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -252,9 +275,10 @@
             // bntNewClient
             // 
             this.bntNewClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bntNewClient.Location = new System.Drawing.Point(5, 3);
+            this.bntNewClient.Location = new System.Drawing.Point(7, 4);
+            this.bntNewClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bntNewClient.Name = "bntNewClient";
-            this.bntNewClient.Size = new System.Drawing.Size(109, 22);
+            this.bntNewClient.Size = new System.Drawing.Size(145, 27);
             this.bntNewClient.TabIndex = 2;
             this.bntNewClient.Text = "Add New Client";
             this.bntNewClient.UseVisualStyleBackColor = true;
@@ -266,10 +290,11 @@
             this.tabPage3.Controls.Add(this.panel8);
             this.tabPage3.Controls.Add(this.panel7);
             this.tabPage3.Controls.Add(this.panel5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(785, 390);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Size = new System.Drawing.Size(1049, 483);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Active Devices";
             // 
@@ -277,9 +302,10 @@
             // 
             this.panel8.Controls.Add(this.listView_md_epc);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(104, 66);
+            this.panel8.Location = new System.Drawing.Point(139, 82);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(678, 321);
+            this.panel8.Size = new System.Drawing.Size(906, 397);
             this.panel8.TabIndex = 116;
             // 
             // listView_md_epc
@@ -297,8 +323,9 @@
             this.listView_md_epc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_md_epc.GridLines = true;
             this.listView_md_epc.Location = new System.Drawing.Point(0, 0);
+            this.listView_md_epc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView_md_epc.Name = "listView_md_epc";
-            this.listView_md_epc.Size = new System.Drawing.Size(678, 321);
+            this.listView_md_epc.Size = new System.Drawing.Size(906, 397);
             this.listView_md_epc.TabIndex = 114;
             this.listView_md_epc.UseCompatibleStateImageBehavior = false;
             this.listView_md_epc.View = System.Windows.Forms.View.Details;
@@ -349,9 +376,10 @@
             // 
             this.panel7.Controls.Add(this.listView_md_addr);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(3, 66);
+            this.panel7.Location = new System.Drawing.Point(4, 82);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(101, 321);
+            this.panel7.Size = new System.Drawing.Size(135, 397);
             this.panel7.TabIndex = 115;
             this.panel7.Visible = false;
             // 
@@ -362,8 +390,9 @@
             this.listView_md_addr.ForeColor = System.Drawing.Color.Black;
             this.listView_md_addr.GridLines = true;
             this.listView_md_addr.Location = new System.Drawing.Point(0, 0);
+            this.listView_md_addr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView_md_addr.Name = "listView_md_addr";
-            this.listView_md_addr.Size = new System.Drawing.Size(101, 321);
+            this.listView_md_addr.Size = new System.Drawing.Size(135, 397);
             this.listView_md_addr.TabIndex = 1;
             this.listView_md_addr.UseCompatibleStateImageBehavior = false;
             this.listView_md_addr.View = System.Windows.Forms.View.Details;
@@ -386,70 +415,78 @@
             this.panel5.Controls.Add(this.btnSet);
             this.panel5.Controls.Add(this.textBox1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Location = new System.Drawing.Point(4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(779, 63);
+            this.panel5.Size = new System.Drawing.Size(1041, 78);
             this.panel5.TabIndex = 3;
             // 
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(41, 38);
+            this.lblPort.Location = new System.Drawing.Point(55, 47);
+            this.lblPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(37, 13);
+            this.lblPort.Size = new System.Drawing.Size(47, 17);
             this.lblPort.TabIndex = 13;
             this.lblPort.Text = "COM0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 38);
+            this.label1.Location = new System.Drawing.Point(7, 47);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(38, 17);
             this.label1.TabIndex = 12;
             this.label1.Text = "Port:";
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(548, 38);
+            this.lblTime.Location = new System.Drawing.Point(731, 47);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(13, 13);
+            this.lblTime.Size = new System.Drawing.Size(16, 17);
             this.lblTime.TabIndex = 11;
             this.lblTime.Text = "0";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(509, 38);
+            this.label3.Location = new System.Drawing.Point(679, 47);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.Size = new System.Drawing.Size(43, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "Time:";
             // 
             // lblNumVhcls
             // 
             this.lblNumVhcls.AutoSize = true;
-            this.lblNumVhcls.Location = new System.Drawing.Point(406, 38);
+            this.lblNumVhcls.Location = new System.Drawing.Point(541, 47);
+            this.lblNumVhcls.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumVhcls.Name = "lblNumVhcls";
-            this.lblNumVhcls.Size = new System.Drawing.Size(13, 13);
+            this.lblNumVhcls.Size = new System.Drawing.Size(16, 17);
             this.lblNumVhcls.TabIndex = 9;
             this.lblNumVhcls.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(293, 38);
+            this.label2.Location = new System.Drawing.Point(391, 47);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.Size = new System.Drawing.Size(142, 17);
             this.label2.TabIndex = 8;
             this.label2.Text = "Numbers of Vehicles:";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(630, 4);
+            this.btnClear.Location = new System.Drawing.Point(840, 5);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(100, 28);
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear Data";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -457,9 +494,10 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(549, 4);
+            this.btnStop.Location = new System.Drawing.Point(732, 5);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.Size = new System.Drawing.Size(100, 28);
             this.btnStop.TabIndex = 6;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -468,9 +506,10 @@
             // checkBoxSingle
             // 
             this.checkBoxSingle.AutoSize = true;
-            this.checkBoxSingle.Location = new System.Drawing.Point(318, 8);
+            this.checkBoxSingle.Location = new System.Drawing.Point(424, 10);
+            this.checkBoxSingle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSingle.Name = "checkBoxSingle";
-            this.checkBoxSingle.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxSingle.Size = new System.Drawing.Size(69, 21);
             this.checkBoxSingle.TabIndex = 5;
             this.checkBoxSingle.Text = "Single";
             this.checkBoxSingle.UseVisualStyleBackColor = true;
@@ -478,18 +517,20 @@
             // checkBoxMulti
             // 
             this.checkBoxMulti.AutoSize = true;
-            this.checkBoxMulti.Location = new System.Drawing.Point(379, 8);
+            this.checkBoxMulti.Location = new System.Drawing.Point(505, 10);
+            this.checkBoxMulti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxMulti.Name = "checkBoxMulti";
-            this.checkBoxMulti.Size = new System.Drawing.Size(75, 17);
+            this.checkBoxMulti.Size = new System.Drawing.Size(96, 21);
             this.checkBoxMulti.TabIndex = 4;
             this.checkBoxMulti.Text = "All Reader";
             this.checkBoxMulti.UseVisualStyleBackColor = true;
             // 
             // btnMultiEPC
             // 
-            this.btnMultiEPC.Location = new System.Drawing.Point(467, 4);
+            this.btnMultiEPC.Location = new System.Drawing.Point(623, 5);
+            this.btnMultiEPC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMultiEPC.Name = "btnMultiEPC";
-            this.btnMultiEPC.Size = new System.Drawing.Size(75, 23);
+            this.btnMultiEPC.Size = new System.Drawing.Size(100, 28);
             this.btnMultiEPC.TabIndex = 3;
             this.btnMultiEPC.Text = "Multi EPC";
             this.btnMultiEPC.UseVisualStyleBackColor = true;
@@ -497,9 +538,10 @@
             // 
             // btnStartPort
             // 
-            this.btnStartPort.Location = new System.Drawing.Point(221, 4);
+            this.btnStartPort.Location = new System.Drawing.Point(295, 5);
+            this.btnStartPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStartPort.Name = "btnStartPort";
-            this.btnStartPort.Size = new System.Drawing.Size(75, 23);
+            this.btnStartPort.Size = new System.Drawing.Size(100, 28);
             this.btnStartPort.TabIndex = 2;
             this.btnStartPort.Text = "Start";
             this.btnStartPort.UseVisualStyleBackColor = true;
@@ -507,9 +549,10 @@
             // 
             // btnSet
             // 
-            this.btnSet.Location = new System.Drawing.Point(140, 4);
+            this.btnSet.Location = new System.Drawing.Point(187, 5);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(75, 23);
+            this.btnSet.Size = new System.Drawing.Size(100, 28);
             this.btnSet.TabIndex = 1;
             this.btnSet.Text = "Set Port";
             this.btnSet.UseVisualStyleBackColor = true;
@@ -517,19 +560,21 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 6);
+            this.textBox1.Location = new System.Drawing.Point(4, 7);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(131, 20);
+            this.textBox1.Size = new System.Drawing.Size(173, 22);
             this.textBox1.TabIndex = 0;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.pnlLog);
             this.tabPage4.Controls.Add(this.panel6);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(785, 390);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Size = new System.Drawing.Size(1049, 483);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Errors Log";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -538,36 +583,40 @@
             // 
             this.pnlLog.Controls.Add(this.txtLog);
             this.pnlLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLog.Location = new System.Drawing.Point(3, 34);
+            this.pnlLog.Location = new System.Drawing.Point(4, 42);
+            this.pnlLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlLog.Name = "pnlLog";
-            this.pnlLog.Size = new System.Drawing.Size(779, 353);
+            this.pnlLog.Size = new System.Drawing.Size(1041, 437);
             this.pnlLog.TabIndex = 1;
             // 
             // txtLog
             // 
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLog.Location = new System.Drawing.Point(0, 0);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLog.Size = new System.Drawing.Size(779, 353);
+            this.txtLog.Size = new System.Drawing.Size(1041, 437);
             this.txtLog.TabIndex = 0;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btnRefreshLog);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(3, 3);
+            this.panel6.Location = new System.Drawing.Point(4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(779, 31);
+            this.panel6.Size = new System.Drawing.Size(1041, 38);
             this.panel6.TabIndex = 0;
             // 
             // btnRefreshLog
             // 
-            this.btnRefreshLog.Location = new System.Drawing.Point(6, 2);
+            this.btnRefreshLog.Location = new System.Drawing.Point(8, 2);
+            this.btnRefreshLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefreshLog.Name = "btnRefreshLog";
-            this.btnRefreshLog.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshLog.Size = new System.Drawing.Size(100, 28);
             this.btnRefreshLog.TabIndex = 0;
             this.btnRefreshLog.Text = "Refresh Log";
             this.btnRefreshLog.UseVisualStyleBackColor = true;
@@ -577,17 +626,19 @@
             // 
             this.panel3.Controls.Add(this.btnExit);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 416);
+            this.panel3.Location = new System.Drawing.Point(0, 512);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(793, 34);
+            this.panel3.Size = new System.Drawing.Size(1057, 42);
             this.panel3.TabIndex = 1;
             // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(706, 6);
+            this.btnExit.Location = new System.Drawing.Point(941, 7);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(100, 28);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -603,33 +654,15 @@
             this.timer_scan.Interval = 1000;
             this.timer_scan.Tick += new System.EventHandler(this.timer_scan_Tick);
             // 
-            // btnShwList
-            // 
-            this.btnShwList.Location = new System.Drawing.Point(364, 1);
-            this.btnShwList.Name = "btnShwList";
-            this.btnShwList.Size = new System.Drawing.Size(75, 23);
-            this.btnShwList.TabIndex = 5;
-            this.btnShwList.Text = "Show List";
-            this.btnShwList.UseVisualStyleBackColor = true;
-            this.btnShwList.Click += new System.EventHandler(this.btnShwList_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(426, 121);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(353, 236);
-            this.textBox2.TabIndex = 1;
-            // 
             // Cars_and_Clients
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(793, 450);
+            this.ClientSize = new System.Drawing.Size(1057, 554);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Cars_and_Clients";
             this.Text = "Cars_and_Clients";
@@ -640,7 +673,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel10.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -716,6 +748,5 @@
         private System.Windows.Forms.Button btnRefreshCars;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnShwList;
-        private System.Windows.Forms.TextBox textBox2;
     }
 }

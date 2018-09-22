@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.IO;
-using System.Reflection;
 
 
 namespace Car_Management
@@ -29,20 +29,28 @@ namespace Car_Management
             Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Car Management\Logs"));
 
             string currentLog = String.Empty;
-            if (File.Exists(path))
+            try
             {
-                currentLog = File.ReadAllText(path);
-                File.Delete(path);
+                if (File.Exists(path))
+                {
+                    currentLog = File.ReadAllText(path);
+                    File.Delete(path);
+                }
+                else
+                {
+                    File.Create(path);
+                }
+                using (StreamWriter writer = new StreamWriter(path, true))
+                {
+                    writer.WriteLine(message + currentLog);
+                    writer.Close();
+                }
             }
-            else
+            catch (Exception ex1)
             {
-                File.Create(path);
+                MessageBox.Show(ex1.Message);
             }
-            using (StreamWriter writer = new StreamWriter(path, true))
-            {
-                writer.WriteLine(message + currentLog);
-                writer.Close();
-            }
+
         }
     }
 }
