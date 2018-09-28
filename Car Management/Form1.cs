@@ -25,7 +25,7 @@ namespace Car_Management
                     using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                     {
                         DataTable table = new DataTable();
-                        SqlDataAdapter adapter = new SqlDataAdapter(@"select * from Contacts", conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(@"select * from Cars", conn);
                         adapter.Fill(table);
 
                         if (table.Rows.Count > 0)

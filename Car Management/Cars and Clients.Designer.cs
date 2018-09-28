@@ -108,7 +108,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1057, 554);
             this.panel1.TabIndex = 0;
@@ -121,7 +121,7 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1057, 512);
@@ -133,9 +133,9 @@
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.panel10);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1049, 483);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cars";
@@ -145,7 +145,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 41);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1041, 438);
             this.panel2.TabIndex = 0;
@@ -159,7 +159,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1041, 438);
             this.dataGridView1.TabIndex = 0;
@@ -171,7 +171,7 @@
             this.panel10.Controls.Add(this.btnAddNew);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(4, 4);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1041, 37);
             this.panel10.TabIndex = 1;
@@ -179,7 +179,7 @@
             // btnShwList
             // 
             this.btnShwList.Location = new System.Drawing.Point(485, 1);
-            this.btnShwList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShwList.Margin = new System.Windows.Forms.Padding(4);
             this.btnShwList.Name = "btnShwList";
             this.btnShwList.Size = new System.Drawing.Size(100, 28);
             this.btnShwList.TabIndex = 5;
@@ -192,7 +192,7 @@
             // 
             this.btnRefreshCars.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnRefreshCars.Location = new System.Drawing.Point(160, 4);
-            this.btnRefreshCars.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefreshCars.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefreshCars.Name = "btnRefreshCars";
             this.btnRefreshCars.Size = new System.Drawing.Size(145, 27);
             this.btnRefreshCars.TabIndex = 4;
@@ -204,7 +204,7 @@
             // 
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddNew.Location = new System.Drawing.Point(7, 4);
-            this.btnAddNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(145, 27);
             this.btnAddNew.TabIndex = 0;
@@ -218,9 +218,9 @@
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.panel9);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1049, 483);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clients";
@@ -230,7 +230,7 @@
             this.panel4.Controls.Add(this.dgvClients);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(4, 40);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1041, 439);
             this.panel4.TabIndex = 0;
@@ -244,7 +244,7 @@
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClients.Location = new System.Drawing.Point(0, 0);
-            this.dgvClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvClients.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.Size = new System.Drawing.Size(1041, 439);
             this.dgvClients.TabIndex = 0;
@@ -255,7 +255,7 @@
             this.panel9.Controls.Add(this.bntNewClient);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(4, 4);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1041, 36);
             this.panel9.TabIndex = 1;
@@ -264,7 +264,7 @@
             // 
             this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnRefresh.Location = new System.Drawing.Point(160, 4);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(145, 27);
             this.btnRefresh.TabIndex = 3;
@@ -276,7 +276,7 @@
             // 
             this.bntNewClient.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.bntNewClient.Location = new System.Drawing.Point(7, 4);
-            this.bntNewClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bntNewClient.Margin = new System.Windows.Forms.Padding(4);
             this.bntNewClient.Name = "bntNewClient";
             this.bntNewClient.Size = new System.Drawing.Size(145, 27);
             this.bntNewClient.TabIndex = 2;
@@ -291,9 +291,9 @@
             this.tabPage3.Controls.Add(this.panel7);
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage3.Size = new System.Drawing.Size(1049, 483);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Active Devices";
@@ -303,7 +303,7 @@
             this.panel8.Controls.Add(this.listView_md_epc);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(139, 82);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(906, 397);
             this.panel8.TabIndex = 116;
@@ -323,7 +323,7 @@
             this.listView_md_epc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_md_epc.GridLines = true;
             this.listView_md_epc.Location = new System.Drawing.Point(0, 0);
-            this.listView_md_epc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView_md_epc.Margin = new System.Windows.Forms.Padding(4);
             this.listView_md_epc.Name = "listView_md_epc";
             this.listView_md_epc.Size = new System.Drawing.Size(906, 397);
             this.listView_md_epc.TabIndex = 114;
@@ -377,7 +377,7 @@
             this.panel7.Controls.Add(this.listView_md_addr);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(4, 82);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(135, 397);
             this.panel7.TabIndex = 115;
@@ -390,7 +390,7 @@
             this.listView_md_addr.ForeColor = System.Drawing.Color.Black;
             this.listView_md_addr.GridLines = true;
             this.listView_md_addr.Location = new System.Drawing.Point(0, 0);
-            this.listView_md_addr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView_md_addr.Margin = new System.Windows.Forms.Padding(4);
             this.listView_md_addr.Name = "listView_md_addr";
             this.listView_md_addr.Size = new System.Drawing.Size(135, 397);
             this.listView_md_addr.TabIndex = 1;
@@ -416,7 +416,7 @@
             this.panel5.Controls.Add(this.textBox1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(4, 4);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1041, 78);
             this.panel5.TabIndex = 3;
@@ -484,7 +484,7 @@
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(840, 5);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 28);
             this.btnClear.TabIndex = 7;
@@ -495,7 +495,7 @@
             // btnStop
             // 
             this.btnStop.Location = new System.Drawing.Point(732, 5);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(4);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(100, 28);
             this.btnStop.TabIndex = 6;
@@ -507,7 +507,7 @@
             // 
             this.checkBoxSingle.AutoSize = true;
             this.checkBoxSingle.Location = new System.Drawing.Point(424, 10);
-            this.checkBoxSingle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxSingle.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxSingle.Name = "checkBoxSingle";
             this.checkBoxSingle.Size = new System.Drawing.Size(69, 21);
             this.checkBoxSingle.TabIndex = 5;
@@ -518,7 +518,7 @@
             // 
             this.checkBoxMulti.AutoSize = true;
             this.checkBoxMulti.Location = new System.Drawing.Point(505, 10);
-            this.checkBoxMulti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxMulti.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxMulti.Name = "checkBoxMulti";
             this.checkBoxMulti.Size = new System.Drawing.Size(96, 21);
             this.checkBoxMulti.TabIndex = 4;
@@ -528,7 +528,7 @@
             // btnMultiEPC
             // 
             this.btnMultiEPC.Location = new System.Drawing.Point(623, 5);
-            this.btnMultiEPC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMultiEPC.Margin = new System.Windows.Forms.Padding(4);
             this.btnMultiEPC.Name = "btnMultiEPC";
             this.btnMultiEPC.Size = new System.Drawing.Size(100, 28);
             this.btnMultiEPC.TabIndex = 3;
@@ -539,7 +539,7 @@
             // btnStartPort
             // 
             this.btnStartPort.Location = new System.Drawing.Point(295, 5);
-            this.btnStartPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStartPort.Margin = new System.Windows.Forms.Padding(4);
             this.btnStartPort.Name = "btnStartPort";
             this.btnStartPort.Size = new System.Drawing.Size(100, 28);
             this.btnStartPort.TabIndex = 2;
@@ -550,7 +550,7 @@
             // btnSet
             // 
             this.btnSet.Location = new System.Drawing.Point(187, 5);
-            this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(4);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(100, 28);
             this.btnSet.TabIndex = 1;
@@ -561,7 +561,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(4, 7);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(173, 22);
             this.textBox1.TabIndex = 0;
@@ -571,9 +571,9 @@
             this.tabPage4.Controls.Add(this.pnlLog);
             this.tabPage4.Controls.Add(this.panel6);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(1049, 483);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Errors Log";
@@ -584,7 +584,7 @@
             this.pnlLog.Controls.Add(this.txtLog);
             this.pnlLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLog.Location = new System.Drawing.Point(4, 42);
-            this.pnlLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLog.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLog.Name = "pnlLog";
             this.pnlLog.Size = new System.Drawing.Size(1041, 437);
             this.pnlLog.TabIndex = 1;
@@ -593,7 +593,7 @@
             // 
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLog.Location = new System.Drawing.Point(0, 0);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(4);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
@@ -606,7 +606,7 @@
             this.panel6.Controls.Add(this.btnRefreshLog);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(4, 4);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1041, 38);
             this.panel6.TabIndex = 0;
@@ -614,7 +614,7 @@
             // btnRefreshLog
             // 
             this.btnRefreshLog.Location = new System.Drawing.Point(8, 2);
-            this.btnRefreshLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefreshLog.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefreshLog.Name = "btnRefreshLog";
             this.btnRefreshLog.Size = new System.Drawing.Size(100, 28);
             this.btnRefreshLog.TabIndex = 0;
@@ -627,7 +627,7 @@
             this.panel3.Controls.Add(this.btnExit);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 512);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1057, 42);
             this.panel3.TabIndex = 1;
@@ -636,7 +636,7 @@
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.Location = new System.Drawing.Point(941, 7);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 28);
             this.btnExit.TabIndex = 1;
@@ -662,7 +662,7 @@
             this.ClientSize = new System.Drawing.Size(1057, 554);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Cars_and_Clients";
             this.Text = "Cars_and_Clients";

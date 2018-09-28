@@ -253,7 +253,7 @@ namespace Car_Management
                 {
                     using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                     {
-                        var select = "SELECT * FROM Contacts ";
+                        var select = "SELECT * FROM Cars ";
                         var dataAdapter = new SqlDataAdapter(select, conn);
                         var select2 = "SELECT * FROM Clients ";
                         var dataAdapter2 = new SqlDataAdapter(select2, conn);
@@ -349,7 +349,7 @@ namespace Car_Management
                     str_rssi = epcs_list[index].RSSI.ToString("f1");
                     direction = epcs_list[index].direction.ToString();
                     totalnum1 += epcs_list[index].count;
-                    string scanTime;
+                    string scanTime1;
                     double pri;
                     double price2=0;
                     bool Exist = false;
@@ -361,25 +361,25 @@ namespace Car_Management
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                         {
                             conn.Open();
-                            string querry3 = "SELECT Account from CONTACTS where SerialNumber = '" + str_epc + "'";
-                            string querry4 = "SELECT LastTime from DeviceData where SerialNumber = '" + str_epc + "'";
+                            string querry3 = "SELECT Account from Cars where SerialNumber = '" + str_epc + "'";
+                            string querry4 = "SELECT LastTime from IDCards where SerialNumber = '" + str_epc + "'";
                             using (SqlCommand cmd3 = new SqlCommand(querry3, conn))
                             {
                                 pri = Convert.ToDouble(cmd3.ExecuteScalar());
                             }
                             using (SqlCommand cmd4 = new SqlCommand(querry4, conn))
                             {
-                                scanTime = cmd4.ExecuteScalar().ToString();
+                                scanTime1 = cmd4.ExecuteScalar().ToString();
                             }
                             conn.Close();
                         }
                         using (SqlConnection conn = new SqlConnection(DatabaseConnection.connectionStr))
                         {
                             conn.Open();
-                            int scanInterval = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalSeconds;
-                            scanTime = DateTime.Now.ToString();
-                            string querry = "UPDATE Contacts SET Count=@str_read_cnt,Account=@pric where SerialNumber = '" + str_epc + "'";
-                            string querry2 = "UPDATE DeviceData SET AntID=@str_ant_id,PC=@str_pc,RSSI=@str_rssi,Count=@str_read_cnt,Dir=@direction,LastTime=@str_time,DevID=@str_dev where SerialNumber = '" + str_epc + "'";
+                            int scanInterval = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime1)).TotalSeconds;
+                            string scanTime2 = DateTime.Now.ToString();
+                            string querry = "UPDATE Cars SET Count=@str_read_cnt,Account=@pric where SerialNumber = '" + str_epc + "'";
+                            string querry2 = "UPDATE IDCards SET AntID=@str_ant_id,PC=@str_pc,RSSI=@str_rssi,Count=@str_read_cnt,Dir=@direction,LastTime=@str_time,DevID=@str_dev where SerialNumber = '" + str_epc + "'";
                             
                             if (scanInterval > 30)
                             {
@@ -405,10 +405,12 @@ namespace Car_Management
                                     cmd2.ExecuteNonQuery();
                                 }
                                 conn.Close();
-                                scanInterval = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime)).TotalSeconds;
+                                scanTime1 = DateTime.Now.ToString();
+                                scanInterval = (int)(Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(scanTime1)).TotalSeconds;
                             }
                             else
                             {
+                                scanTime2 = scanTime1;
                                 conn.Close();
                             }
                             

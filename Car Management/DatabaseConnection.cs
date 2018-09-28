@@ -4,7 +4,9 @@ namespace Car_Management
 {
     class DatabaseConnection
     {
-        public static string connectionStr = @"Data Source=crugamba;Initial Catalog = Contacts; Integrated Security = True";
+        public static string connectionStr = @"Data Source=crugamba;
+                                               Initial Catalog = CarManagementDatabase; 
+                                               Integrated Security = True";
         public static SqlConnection connection = new SqlConnection(connectionStr);
         public string checkDatabase()
         {
